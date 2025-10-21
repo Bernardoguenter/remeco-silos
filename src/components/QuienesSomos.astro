@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import silosAereos from "../assets/silos-comederos.jpg";
+---
+
+<section
+  class="flex flex-col lg:flex-row lg:items-center lg:justify-between bg-stone-200 p-12 lg:p-0 gap-6">
+  <article class="lg:w-1/2 lg:p-16 p-0">
+    <h2 class="text-red-800 font-bold text-2xl md:text-3xl lg:text-4xl mb-4">
+      Acerca de Remeco
+    </h2>
+    <div class="flex flex-col gap-2">
+      <p class="text-slate-800">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+        repudiandae quos aut totam similique odio molestiae vitae sint animi
+        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
+        deserunt numquam ullam?
+      </p>
+      <p class="text-slate-800">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+        repudiandae quos aut totam similique odio molestiae vitae sint animi
+        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
+        deserunt numquam ullam?
+      </p>
+      <p class="text-slate-800">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+        repudiandae quos aut totam similique odio molestiae vitae sint animi
+        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
+        deserunt numquam ullam?
+      </p>
+    </div>
+  </article>
+  <aside class="lg:w-1/2 lg:h-full">
+    <Image
+      src={silosAereos}
+      alt={"Sobre Nosotros"}
+      width={800}
+      height={800}
+      class="object-cover lg:w-full lg:h-full lg:rounded-l rounded"
+    />
+  </aside>
+</section>

@@ -1,9 +1,8 @@
 ---
-import Image from "astro/components/Image.astro";
-import dropDownIconWhite from "../../assets/arrow_drop_down_white.svg";
 import silosAereos from "../../assets/silos-aereos.jpg";
 import silosComederos from "../../assets/silos-comederos.jpg";
 import { Picture } from "astro:assets";
+import ArrowDropDown from "../../assets/svg/ArrowDropDown.astro";
 
 interface Props {
   link: string;
@@ -23,19 +22,11 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
     class="text-stone-200 md:text-slate-800 text-right w-full">
     {label}
   </a>
-
   {
     isSubMenu && (
-      <>
-        <Image
-          src={dropDownIconWhite}
-          alt="drop down icon"
-          width={18}
-          height={18}
-          id={`${label.toLowerCase()}-arrow`}
-          class="inline-block ml-1 md:hidden transition-transform duration-300 cursor-pointer"
-        />
-      </>
+      <span id={`${label.toLowerCase()}-arrow`}>
+        <ArrowDropDown color="white" />
+      </span>
     )
   }
 </li>
