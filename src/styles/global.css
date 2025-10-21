@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Red800 */
+/* Slate800 */
+/* Slate900 */
+/* gray100 */
+/* stone200 */
+/* stone300 */
+
+@layer base {
+  :root {
+    --swiper-navigation-color: oklch(43.766% 0.15585 26.888) !important;
+    --font-heading: "Montserrat", sans-serif;
+    --font-body: "Overpass", sans-serif;
+    --rojo: oklch(43.766% 0.15585 26.888);
+    --azul: #0f172a;
+    --azulOscuro: #050505;
+    --fondo: oklch(96.996% 0.00298 264.793);
+    --grisClaro: #f5f5f5;
+    --grisClaro2: oklch(86.07% 0.0001 271.152);
+  }
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--fondo);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}

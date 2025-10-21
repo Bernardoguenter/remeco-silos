@@ -1,0 +1,22 @@
+---
+import AddressIcon from "../../assets/svg/AddressIcon.astro";
+import EmailIcon from "../../assets/svg/EmailIcon.astro";
+import PhoneIcon from "../../assets/svg/PhoneIcon.astro";
+---
+
+<article class="md:w-1/3 w-full">
+  <ul class="flex flex-col items-center md:items-start gap-2 text-slate-800">
+    <li class="flex items-center gap-1 text-center md:text-base text-sm">
+      <PhoneIcon size="16" />
+      Teléfono: 12-3456789
+    </li>
+    <li class="flex items-center gap-1 text-center md:text-base text-sm">
+      <EmailIcon size="16" />
+      test@test.com
+    </li>
+    <li class="flex items-center gap-1 text-center md:text-base text-sm">
+      <AddressIcon size="16" />
+      Colonia Menonita, Remecó, La Pampa
+    </li>
+  </ul>
+</article>

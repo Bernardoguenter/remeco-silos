@@ -1,0 +1,17 @@
+---
+interface Props {
+  link: string;
+  label: string;
+  styles?: string;
+}
+
+const { link, label, styles = "" } = Astro.props;
+---
+
+<li class={`uppercase text-slate-800 flex items-center relative ${styles}`}>
+  <a
+    href={link}
+    class="text-slate-800 text-sm">
+    {label}
+  </a>
+</li>

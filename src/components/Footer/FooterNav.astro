@@ -1,0 +1,24 @@
+---
+import MenuItemFooter from "./MenuItemFooter.astro";
+---
+
+<nav class="md:w-1/3 w-full md:block flex items-center justify-center">
+  <ul class="flex flex-col md:items-start items-center gap-2">
+    <MenuItemFooter
+      link="/"
+      label="Inicio"
+    />
+    <MenuItemFooter
+      link="/silos/comederos"
+      label="Silos comederos"
+    />
+    <MenuItemFooter
+      link="/silos/aereos"
+      label="Silos aéreos"
+    />
+    <MenuItemFooter
+      link="/contacto"
+      label="Contacto"
+    />
+  </ul>
+</nav>

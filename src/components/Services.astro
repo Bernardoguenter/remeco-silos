@@ -1,0 +1,28 @@
+---
+import IconAndText from "./IconAndText.astro";
+import shipingIcon from "../assets/shipping.svg";
+import paymentIcon from "../assets/payment-options.svg";
+import serviceIcon from "../assets/service.svg";
+---
+
+<article
+  class="p-4 md:p-8 m-auto flex items-center justify-evenly border-t border-t-stone-300 border-b w-full border-b-stone-300">
+  <IconAndText
+    altText="Envíos a todo el país"
+    textLine1="Envíos a todo"
+    textLine2="el país"
+    image={shipingIcon}
+  />
+  <IconAndText
+    altText="Opciones financiación"
+    textLine1="Opciones de"
+    textLine2="financiación"
+    image={paymentIcon}
+  />
+  <IconAndText
+    altText="Servicio Personalizado"
+    textLine1="Servicio Personalizado"
+    textLine2="Pre y Post Venta"
+    image={serviceIcon}
+  />
+</article>

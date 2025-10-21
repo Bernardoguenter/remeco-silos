@@ -1,0 +1,16 @@
+---
+import { Picture } from "astro:assets";
+import logoImg from "../../assets/logo-metalurgica-remeco.png";
+import Nav from "./Nav.astro";
+---
+
+<header
+  class="h-20 py-2 px-4 lg:px-20 w-full flex justify-between items-center bg-stone-200">
+  <Picture
+    src={logoImg}
+    alt="Logo Metalúrgica Remecó"
+    layout="constrained"
+    width={200}
+  />
+  <Nav />
+</header>

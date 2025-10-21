@@ -1,0 +1,29 @@
+---
+import silosComederos from "../assets/silos-comederos.jpg";
+import silosAereos from "../assets/silos-aereos.jpg";
+import GridCard from "./GridCard.astro";
+---
+
+<main class="p-4 lg:p-16 md:p-12 w-full">
+  <h2 class="text-5xl text-center font-bold mb-8 text-slate-800">
+    Línea de Silos
+  </h2>
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <GridCard
+      imageSrc={silosAereos}
+      alt="Silos Aéreos"
+      title="Silos Aéreos"
+      imgWidth={800}
+      imgHeight={600}
+      link="/silos/aereos"
+    />
+    <GridCard
+      imageSrc={silosComederos}
+      alt="Silos Comederos"
+      title="Silos Comederos"
+      imgWidth={800}
+      imgHeight={600}
+      link="/silos/comederos"
+    />
+  </section>
+</main>

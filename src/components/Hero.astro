@@ -1,0 +1,140 @@
+---
+import silosAereos from "../assets/silos-aereos.jpg";
+import silosComederos from "../assets/silos-comederos.jpg";
+import { Image } from "astro:assets";
+import ButtonLink from "./ButtonLink.astro";
+---
+
+<section class="hero-section w-full">
+  <div class="swiper-hero">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <div class="slide-image">
+            <Image
+              alt="Silos Aéreos"
+              src={silosAereos}
+              class="object-cover object-center w-full h-full"
+            />
+          </div>
+          <div class="slide-text">
+            <h2 class="text-4xl uppercase text-slate-800 font-bold">
+              Silos Aéreos
+            </h2>
+            <p class="text-slate-900">
+              Acá va una descripción para este título.
+            </p>
+            <ButtonLink
+              label="Ver más"
+              style="secondary"
+              link="/silos/aereos"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <div class="slide-image">
+            <Image
+              alt="Silos Comederos"
+              src={silosComederos}
+              class="object-cover object-center w-full h-full"
+            />
+          </div>
+          <div class="slide-text">
+            <h2 class="text-4xl uppercase text-slate-800 font-bold">
+              Silos Comederos
+            </h2>
+            <p class="text-slate-900">
+              Acá va una descripción para este título.
+            </p>
+            <ButtonLink
+              label="Ver más"
+              style="secondary"
+              link="/silos/comederos"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next bg-white p-2 rounded-full"></div>
+    <div class="swiper-button-prev bg-white p-2 rounded-full"></div>
+  </div>
+</section>
+
+<style>
+  .swiper-hero {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    height: 70vh;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background: #fff;
+  }
+
+  .slide-content {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+  }
+
+  .slide-image {
+    flex: 0 0 60%;
+    height: 100%;
+  }
+
+  .slide-text {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-section {
+      height: 50vh;
+    }
+
+    .slide-image {
+      flex: 0 0 50%;
+    }
+
+    .slide-text {
+      flex: 0 0 50%;
+    }
+
+    .swiper-slide {
+      height: 50vh;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slide-content {
+      flex-direction: column;
+    }
+    .slide-image,
+    .slide-text {
+      flex: 0 0 auto;
+      width: 100%;
+      height: 50%;
+    }
+    .slide-text {
+      padding: 1.5rem;
+    }
+    .slide-text h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script src="../../src/lib/swiper.js"></script>

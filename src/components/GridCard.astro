@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import ArrowFoward from "../assets/svg/ArrowFoward.astro";
+
+interface Props {
+  imageSrc: ImageMetadata;
+  alt: string;
+  title: string;
+  imgWidth: number;
+  imgHeight: number;
+  link: string;
+  layout?: "constrained" | "full-width" | "fixed" | "none";
+}
+
+const {
+  imageSrc,
+  alt,
+  title,
+  imgHeight,
+  imgWidth,
+  layout = "constrained",
+  link,
+} = Astro.props;
+---
+
+<article>
+  <Image
+    src={imageSrc}
+    alt={alt}
+    class="rounded-t-sm object-cover"
+    width={imgWidth}
+    height={imgHeight}
+    layout={layout}
+  />
+  <aside class="bg-slate-900 flex justify-evenly rounded-b-sm">
+    <h3 class="text-gray-100 w-9/10 p-4 font-medium text-2xl">{title}</h3>
+    <a
+      href={link}
+      class="w-1/10 hover:w-2/10 flex justify-end items-stretch bg-slate-800 h-full p-4 cursor-pointer rounded-br-sm">
+      <div class="flex justify-end items-stretch h-full">
+        <ArrowFoward color="white" />
+      </div>
+    </a>
+  </aside>
+</article>
