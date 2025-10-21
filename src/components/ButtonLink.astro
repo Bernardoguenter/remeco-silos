@@ -6,12 +6,16 @@ interface Props {
 }
 
 const { link, label, style = "primary" } = Astro.props;
+
+const baseClasses = "border px-4 py-2 border-slate-800 rounded";
+const styleClasses =
+  style === "primary" ? "bg-slate-800 text-white" : "bg-white text-slate-800";
 ---
 
 <button>
   <a
     href={link}
-    class={`border px-4 py-2 border-slate-800 rounded ${style} === "primary" ? "bg-slate-800  text-white" : "bg-white text-slate-800"`}
-    >{label}</a
-  >
+    class={`${baseClasses} ${styleClasses}`}>
+    {label}
+  </a>
 </button>

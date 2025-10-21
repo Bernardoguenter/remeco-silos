@@ -32,14 +32,16 @@ const {
     height={imgHeight}
     layout={layout}
   />
-  <aside class="bg-slate-900 flex justify-evenly rounded-b-sm">
-    <h3 class="text-gray-100 w-9/10 p-4 font-medium text-2xl">{title}</h3>
+  <aside class="bg-slate-900 flex justify-evenly items-center rounded-b-sm p-0">
+    <h3 class="text-gray-100 w-9/10 p-4">
+      {title}
+    </h3>
     <a
       href={link}
-      class="w-1/10 hover:w-2/10 flex justify-end items-stretch bg-slate-800 h-full p-4 cursor-pointer rounded-br-sm">
-      <div class="flex justify-end items-stretch h-full">
+      class="w-2/10 lg:w-1/10 hover:lg:w-2/10 md:w-2/10 hover:md:w-3/10 flex justify-end items-stretch bg-slate-800 h-full p-5 cursor-pointer rounded-br-sm">
+      <span class="flex justify-end items-stretch h-full">
         <ArrowFoward color="white" />
-      </div>
+      </span>
     </a>
   </aside>
 </article>

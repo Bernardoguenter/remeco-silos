@@ -1,9 +1,8 @@
 ---
-import Image from "astro/components/Image.astro";
-import dropDownIcon from "../../assets/arrow_drop_down.svg";
 import silosAereos from "../../assets/silos-aereos.jpg";
 import silosComederos from "../../assets/silos-comederos.jpg";
-import { Picture } from "astro:assets";
+import { Picture, Image } from "astro:assets";
+import ArrowDropDown from "../../assets/svg/ArrowDropDown.astro";
 
 interface Props {
   link: string;
@@ -26,11 +25,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
   {
     isSubMenu && (
       <>
-        <Image
-          src={dropDownIcon}
-          alt="drop down icon"
-          class="md:inline-block ml-1 hidden"
-        />
+        <ArrowDropDown />
       </>
     )
   }
@@ -45,12 +40,13 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
         <a
           href="/silos/aereos"
           class="text-center">
-          <Picture
+          <Image
             alt="silos aéreos"
             src={silosAereos}
-            layout="constrained"
-            width={220}
-            class="rounded max-h-56"
+/*             layout="full-width"
+ */            width={200}
+            height={200}
+            class="rounded aspect-square "
           />
           Silos Aéreos
         </a>
@@ -59,12 +55,13 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
         <a
           href="/silos/comederos"
           class="text-center">
-          <Picture
+          <Image
             alt="silos comederos"
             src={silosComederos}
-            layout="constrained"
-            width={220}
-            class="rounded max-h-56"
+/*             layout="full-width" */
+            width={200}
+            height={200}
+            class="rounded aspect-square"
           />
           Silos Comederos
         </a>
