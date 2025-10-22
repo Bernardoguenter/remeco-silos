@@ -1,0 +1,24 @@
+---
+interface Props {
+  inputName: string;
+  inputType?: "text" | "email";
+  inputPlaceholder?: string;
+}
+
+const { inputName, inputType = "text", inputPlaceholder = "" } = Astro.props;
+---
+
+<div class="w-full">
+  <label
+    for={inputName}
+    class="hidden"
+    >{inputName}</label
+  >
+  <input
+    class="border border-slate-900 rounded w-full py-2 px-4 placeholder:capitalize placeholder:text-slate-800 focus:outline-1 focus:outline-slate-900"
+    type={inputType}
+    placeholder={inputPlaceholder}
+    name={inputName}
+  />
+  <p class="text-xs text-red-800 mt-1 error-msg hidden"></p>
+</div>

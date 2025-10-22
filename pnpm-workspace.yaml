@@ -1,1 +1,4 @@
+ignoredBuiltDependencies:
+  - '@tailwindcss/oxide'
+
 mininumRelaseAge: 1440

@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import whatsapp from "../assets/whatsapp.svg";
+---
+
+<button
+  class="fixed md:bottom-5 bottom-3 md:right-5 right-3 z-50 rounded-full"
+  id="wa-btn">
+  <Image
+    src={whatsapp}
+    alt="whatsapp icon"
+    width={56}
+    height={56}
+    class="svg"
+  />
+</button>
+
+<style>
+  .svg {
+    border-radius: 100%;
+  }
+</style>
+
+<script>
+  const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
+  const btn = document.getElementById("wa-btn") as HTMLButtonElement;
+  btn.addEventListener("click", () => {
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos`,
+      "_blank"
+    );
+  });
+</script>

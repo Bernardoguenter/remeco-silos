@@ -1,0 +1,48 @@
+---
+import Input from "./Input.astro";
+import TextArea from "./TextArea.astro";
+---
+
+<form
+  id="contact-form"
+  class="flex flex-col gap-4 w-full max-w-lg mx-auto">
+  <h2 class="text-xl font-semibold mb-2">Dejanos tu mensaje</h2>
+
+  <Input
+    inputName="nombre"
+    inputPlaceholder="nombre"
+  />
+  <Input
+    inputName="email"
+    inputPlaceholder="email"
+    inputType="email"
+  />
+  <Input
+    inputName="telefono"
+    inputPlaceholder="teléfono"
+  />
+  <TextArea
+    inputName="mensaje"
+    inputPlaceholder="Dejanos tu mensaje"
+  />
+
+  <p
+    id="delivery-success-msg"
+    class="text-slate-800 text-center hidden">
+    Tu mensaje se ha enviado. Pronto te estaremos respondiendo.
+  </p>
+  <p
+    id="delivery-error-msg"
+    class="text-red-800 text-center hidden">
+    Tu mensaje no se ha enviado. Por favor vuelve a intentarlo.
+  </p>
+
+  <button
+    id="submit-btn"
+    type="submit"
+    class="border px-4 py-2 border-red-800 rounded bg-red-800 text-white disabled:opacity-30 cursor-pointer">
+    Enviar
+  </button>
+</form>
+
+<script src="../../lib/contact-form.ts"></script>
