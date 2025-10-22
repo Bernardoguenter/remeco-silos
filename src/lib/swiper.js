@@ -2,7 +2,6 @@ import Swiper from "swiper";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 document.addEventListener("DOMContentLoaded", () => {
   new Swiper(".swiper-hero", {
