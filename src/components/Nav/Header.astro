@@ -1,17 +1,18 @@
 ---
 import { Picture } from "astro:assets";
-import logoImg from "../../assets/logo-metalurgica-remeco.png";
+import logo from "../../assets/logoRemecoBlanco.png";
 import Nav from "./Nav.astro";
 ---
 
 <header
-  class="h-20 py-2 px-4 lg:px-20 w-full flex justify-between items-center bg-stone-200">
+  class="h-20 py-2 px-4 lg:px-20 w-full flex justify-between items-center bg-slate-900">
   <a href="/"
     ><Picture
-      src={logoImg}
+      src={logo}
       alt="Logo Metalúrgica Remecó"
+      class="max-w-[150px]"
       layout="constrained"
-      width={200}
+      width={800}
     /></a
   >
 

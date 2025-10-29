@@ -15,11 +15,11 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
 ---
 
 <li
-  class={`uppercase text-slate-800 flex items-center relative ${styles}`}
+  class={`uppercase text-stone-200 flex items-center relative ${styles}`}
   id={isSubMenu ? `${label.toLowerCase()}-hover` : ""}>
   <a
     href={link}
-    class="text-stone-200 md:text-slate-800"
+    class="text-stone-200"
     >{label}</a
   >
   {
@@ -43,8 +43,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
           <Image
             alt="silos aéreos"
             src={silosAereos}
-/*             layout="full-width"
- */            width={200}
+            width={200}
             height={200}
             class="rounded aspect-square "
           />
@@ -58,7 +57,6 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
           <Image
             alt="silos comederos"
             src={silosComederos}
-/*             layout="full-width" */
             width={200}
             height={200}
             class="rounded aspect-square"

@@ -1,16 +1,25 @@
 ---
+import ContactDataInfo from "../../components/ContactDataInfo.astro";
 import ContactForm from "../../components/Form/ContactForm.astro";
+import GoogleMap from "../../components/GoogleMap.astro";
+import PageTitle from "../../components/PageTitle.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main class="section-container">
-    <h1>Contacto</h1>
-    <section class="py-4 flex justify-between w-full gap-16">
+  <PageTitle pageTitle="Contacto" />
+  <main class="section-container grow">
+    <section
+      class="py-4 flex md:flex-row flex-col-reverse justify-between w-full gap-8 md:gap-12 lg:gap-16">
       <article class="w-full md:w-1/2">
-        ACÁ VAN LAS DIRECCIONES Y TELÉFONO
+        <h2 class="font-semibold mb-4">Ubicación y Contactos</h2>
+        <div class="w-full max-h-[400px] rounded mb-8">
+          <GoogleMap />
+        </div>
+        <ContactDataInfo />
       </article>
       <article class="w-full md:w-1/2">
+        <h2 class="font-semibold mb-4">Dejanos tu mensaje</h2>
         <ContactForm />
       </article>
     </section>

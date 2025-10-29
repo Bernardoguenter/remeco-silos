@@ -3,7 +3,59 @@ import { Image } from "astro:assets";
 import ArrowFoward from "../assets/svg/ArrowFoward.astro";
 
 interface Props {
-  imageSrc: ImageMetadata;
+  imageSrc: string;
+  alt: string;
+  title: string;
+  imgWidth: number;
+  imgHeight: number;
+  link: string;
+  layout?: "constrained" | "full-width" | "fixed" | "none";
+}
+
+const {
+  imageSrc,
+  alt,
+  title,
+  imgHeight,
+  imgWidth,
+  layout = "constrained",
+  link,
+} = Astro.props;
+---
+
+<article
+  class="flex flex-col bg-slate-900 rounded-sm overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-[350px]">
+  <!-- Imagen -->
+  <a
+    href={link}
+    class="flex-shrink-1 h-[250px] w-full">
+    <Image
+      src={imageSrc}
+      alt={alt}
+      width={imgWidth}
+      height={imgHeight}
+      layout={layout}
+      class="w-full h-full object-cover object-center"
+    />
+  </a>
+
+  <!-- Contenido inferior -->
+  <aside class="flex justify-between items-center bg-slate-900 flex-grow p-4">
+    <h3 class="text-gray-100 text-lg font-semibold">Silo {title}</h3>
+    <a
+      href={link}
+      class="flex items-center justify-center bg-slate-800 hover:bg-slate-700 rounded-full p-2 transition-all duration-200">
+      <ArrowFoward color="white" />
+    </a>
+  </aside>
+</article>
+
+<!-- ---
+import { Image } from "astro:assets";
+import ArrowFoward from "../assets/svg/ArrowFoward.astro";
+
+interface Props {
+  imageSrc: string;
   alt: string;
   title: string;
   imgWidth: number;
@@ -24,17 +76,19 @@ const {
 ---
 
 <article>
-  <Image
-    src={imageSrc}
-    alt={alt}
-    class="rounded-t-sm object-cover"
-    width={imgWidth}
-    height={imgHeight}
-    layout={layout}
-  />
+  <a href={link}>
+    <Image
+      src={imageSrc}
+      alt={alt}
+      class="rounded-t-sm object-cover max-h-[200px] object-center"
+      width={imgWidth}
+      height={imgHeight}
+      layout={layout}
+    />
+  </a>
   <aside class="bg-slate-900 flex justify-evenly items-center rounded-b-sm p-0">
     <h3 class="text-gray-100 w-9/10 p-4">
-      {title}
+      Silo {title}
     </h3>
     <a
       href={link}
@@ -45,3 +99,4 @@ const {
     </a>
   </aside>
 </article>
+ -->
