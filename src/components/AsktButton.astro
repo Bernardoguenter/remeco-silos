@@ -1,0 +1,19 @@
+---
+interface Props {
+  silo: string;
+  style?: "primary" | "secondary";
+}
+
+const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
+const { silo, style } = Astro.props;
+
+const baseClasses = "border px-4 py-2 border-slate-800 rounded";
+const styleClasses =
+  style === "primary" ? "bg-slate-800 text-white" : "bg-white text-slate-800";
+---
+
+<a
+  href={`https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos. Estoy interesado en un ${silo}`}
+  class={`${baseClasses} ${styleClasses}`}>
+  Hablar con un asesor
+</a>

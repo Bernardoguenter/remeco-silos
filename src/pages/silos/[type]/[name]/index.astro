@@ -1,0 +1,74 @@
+---
+import Breadcums from "../../../../components/Breadcumbs.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import { getGlobalPreferences } from "../../../../lib/globalStore";
+import { getSiloByName } from "../../../../lib/silos";
+import type { Preferences, Silo } from "../../../../types/types";
+import { getSiloPrice } from "../../../../helpers/calculatePrice";
+import AsktButton from "../../../../components/AsktButton.astro";
+
+const { name } = Astro.params;
+
+let silo: Silo | null = null;
+let preferences: Preferences | null = null;
+try {
+  if (name) {
+    [preferences, silo] = await Promise.all([
+      getGlobalPreferences(),
+      getSiloByName(name),
+    ]);
+  }
+} catch (err) {
+  console.error("Error al obtener silos o preferencias:", err);
+}
+
+let formattedPrice;
+if (preferences && silo) {
+  const price = name ? getSiloPrice(name, preferences, silo) : 0;
+  formattedPrice = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 0,
+  }).format(price);
+}
+---
+
+<Layout>
+  {
+    silo ? (
+      <>
+        <Breadcums
+          base="Silos"
+          baseLink="/silos"
+          type={
+            silo.silo_type === "aereos" ? "base aérea" : "comederos autoconsumo"
+          }
+          typeLink={`/silos/${silo.silo_type}`}
+        />
+        <main class="p-4 lg:p-16 md:p-12 w-full">
+          <section>
+            <h1>
+              {`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
+            </h1>
+            <img
+              src={silo.image_url}
+              alt={silo.name}
+              class="rounded-2xl shadow-md w-full max-w-[600px] object-cover"
+            />
+            <p class="text-gray-700">{silo.description}</p>
+
+            <p class="text-lg font-semibold text-slate-800">
+              Precio: {formattedPrice}
+            </p>
+            <p>Incluye IVA {preferences?.iva_percentage}%</p>
+            <AsktButton
+              silo={`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
+            />
+          </section>
+        </main>
+      </>
+    ) : (
+      <p class="text-center text-gray-500 py-16">Silo no encontrado.</p>
+    )
+  }
+</Layout>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  base: string;
+  type: string;
+  baseLink: string;
+  typeLink: string;
+}
+
+const { base, type, baseLink, typeLink } = Astro.props;
+---
+
+<h2
+  class="border-b border-b-stone-200 text-slate-800 w-full section-container !text-base uppercase">
+  <a href={baseLink.startsWith("/") ? baseLink : `/${baseLink}`}>{base}</a>
+  {" / "}
+  <a href={typeLink.startsWith("/") ? typeLink : `/${typeLink}`}>{type}</a>
+</h2>

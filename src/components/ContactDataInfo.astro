@@ -1,0 +1,37 @@
+---
+import { string } from "astro:schema";
+import AddressIcon from "../assets/svg/AddressIcon.astro";
+import EmailIcon from "../assets/svg/EmailIcon.astro";
+import PhoneIcon from "../assets/svg/PhoneIcon.astro";
+
+interface Props {
+  textColor?: string;
+  iconColor?: string;
+}
+
+const { textColor = "text-slate-800", iconColor } = Astro.props;
+---
+
+<ul class=`flex flex-col items-center md:items-start gap-2 ${textColor}`>
+  <li class="flex items-center gap-1 text-center md:text-base text-sm">
+    <PhoneIcon
+      size="16"
+      color={iconColor}
+    />
+    Teléfono: 12-3456789
+  </li>
+  <li class="flex items-center gap-1 text-center md:text-base text-sm">
+    <EmailIcon
+      size="16"
+      color={iconColor}
+    />
+    test@test.com
+  </li>
+  <li class="flex items-center gap-1 text-center md:text-base text-sm">
+    <AddressIcon
+      size="16"
+      color={iconColor}
+    />
+    Colonia Menonita, Remecó, La Pampa
+  </li>
+</ul>

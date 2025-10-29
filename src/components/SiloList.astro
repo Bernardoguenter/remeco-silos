@@ -1,0 +1,31 @@
+---
+import type { Silo } from "../types/types";
+import GridCard from "./GridCard.astro";
+
+interface Props {
+  silos: Silo[];
+}
+
+const { silos } = Astro.props;
+---
+
+<main class="p-4 lg:p-16 md:p-12 w-full">
+  <section class="grid grid-cols-1 md:grid-cols-3 lg:gap-12 gap-6">
+    {
+      Array.isArray(silos) && silos.length > 0 ? (
+        silos.map((silo) => (
+          <GridCard
+            imageSrc={silo.image_url}
+            alt={silo.name}
+            title={silo.name}
+            imgWidth={500}
+            imgHeight={500}
+            link={`/silos/${silo.silo_type}/${silo.name}`}
+          />
+        ))
+      ) : (
+        <p>No hay silos disponibles.</p>
+      )
+    }
+  </section>
+</main>
