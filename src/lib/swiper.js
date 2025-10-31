@@ -3,7 +3,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:page-load", () => {
   new Swiper(".swiper-hero", {
     modules: [Navigation, Autoplay],
     direction: "horizontal",
