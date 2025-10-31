@@ -5,13 +5,13 @@
   "compilerOptions": {
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@assets/*": ["./srcassets/*"],
       "@actions/*": ["./src/actions/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@lib/*": ["./src/lib/*"],
       "@pages/*": ["./src/pages/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   }
 }
