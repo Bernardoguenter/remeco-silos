@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import whatsapp from "../assets/whatsapp.svg";
+import whatsapp from "@assets/whatsapp.svg";
 ---
 
 <button
@@ -22,12 +22,14 @@ import whatsapp from "../assets/whatsapp.svg";
 </style>
 
 <script>
-  const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
-  const btn = document.getElementById("wa-btn") as HTMLButtonElement;
-  btn.addEventListener("click", () => {
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos`,
-      "_blank"
-    );
+  document.addEventListener("astro:page-load", () => {
+    const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
+    const btn = document.getElementById("wa-btn") as HTMLButtonElement;
+    btn.addEventListener("click", () => {
+      window.open(
+        `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos`,
+        "_blank"
+      );
+    });
   });
 </script>

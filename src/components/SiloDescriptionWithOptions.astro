@@ -1,0 +1,56 @@
+---
+import { formatPrices } from "@helpers/formatData";
+import StringToList from "./StringToList.astro";
+
+interface Props {
+  description: string;
+  price: number;
+  iva_percentage: number;
+  options: Record<string, string>;
+  cone_base_45: number;
+  cone_base_55: number;
+}
+
+const {
+  description,
+  iva_percentage,
+  price,
+  options,
+  cone_base_45,
+  cone_base_55,
+} = Astro.props;
+
+const mappedOptions = Object.entries(options).map(([angle, detail]) => {
+  const title = `Cono ${angle}°`;
+  const newDescription = `${description}, ${detail}`;
+  let newPrice = price;
+
+  if (angle === "45") newPrice = price * (1 + cone_base_45 / 100);
+  else if (angle === "55") newPrice = price * (1 + cone_base_55 / 100);
+
+  return {
+    title,
+    description: newDescription,
+    price: formatPrices(newPrice),
+  };
+});
+
+---
+{
+  mappedOptions.map((silo)=>(
+<div>
+  <p class="mb-2 font-bold text-slate-900">Características {silo.title}:</p>
+  <StringToList inputString={silo.description} />
+</div>
+<div>
+  <p class="text-lg font-semibold text-slate-800">
+    Precio: {silo.price}
+  </p>
+  <p class="text-slate-800 !text-sm">
+    Incluye IVA {iva_percentage}%
+  </p>
+</div>
+  
+))
+}
+

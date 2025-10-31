@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import ArrowFoward from "../assets/svg/ArrowFoward.astro";
+import ArrowFoward from "@assets/svg/ArrowFoward.astro";
 
 interface Props {
-  imageSrc: string;
+  imageSrc: string | ImageMetadata;
   alt: string;
   title: string;
   imgWidth: number;
@@ -29,14 +29,26 @@ const {
   <a
     href={link}
     class="flex-shrink-1 h-[250px] w-full">
-    <Image
-      src={imageSrc}
-      alt={alt}
-      width={imgWidth}
-      height={imgHeight}
-      layout={layout}
-      class="w-full h-full object-cover object-center"
-    />
+    {
+      typeof imageSrc === "string" ? (
+        <img
+          src={imageSrc}
+          alt={alt}
+          width={imgWidth}
+          height={imgHeight}
+          class="w-full h-full object-cover object-center"
+        />
+      ) : (
+        <Image
+          src={imageSrc}
+          alt={alt}
+          width={imgWidth}
+          height={imgHeight}
+          layout={layout}
+          class="w-full h-full object-cover object-center"
+        />
+      )
+    }
   </a>
 
   <!-- Contenido inferior -->
@@ -49,54 +61,3 @@ const {
     </a>
   </aside>
 </article>
-
-<!-- ---
-import { Image } from "astro:assets";
-import ArrowFoward from "../assets/svg/ArrowFoward.astro";
-
-interface Props {
-  imageSrc: string;
-  alt: string;
-  title: string;
-  imgWidth: number;
-  imgHeight: number;
-  link: string;
-  layout?: "constrained" | "full-width" | "fixed" | "none";
-}
-
-const {
-  imageSrc,
-  alt,
-  title,
-  imgHeight,
-  imgWidth,
-  layout = "constrained",
-  link,
-} = Astro.props;
----
-
-<article>
-  <a href={link}>
-    <Image
-      src={imageSrc}
-      alt={alt}
-      class="rounded-t-sm object-cover max-h-[200px] object-center"
-      width={imgWidth}
-      height={imgHeight}
-      layout={layout}
-    />
-  </a>
-  <aside class="bg-slate-900 flex justify-evenly items-center rounded-b-sm p-0">
-    <h3 class="text-gray-100 w-9/10 p-4">
-      Silo {title}
-    </h3>
-    <a
-      href={link}
-      class="w-2/10 lg:w-1/10 hover:lg:w-2/10 md:w-2/10 hover:md:w-3/10 flex justify-end items-stretch bg-slate-800 h-full p-5 cursor-pointer rounded-br-sm">
-      <span class="flex justify-end items-stretch h-full">
-        <ArrowFoward color="white" />
-      </span>
-    </a>
-  </aside>
-</article>
- -->

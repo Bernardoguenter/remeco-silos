@@ -1,11 +1,14 @@
 ---
-import Breadcums from "../../../../components/Breadcumbs.astro";
-import Layout from "../../../../layouts/Layout.astro";
-import { getGlobalPreferences } from "../../../../lib/globalStore";
-import { getSiloByName } from "../../../../lib/silos";
+import Breadcums from "@components/Breadcumbs.astro";
+import Layout from "@layouts/Layout.astro";
+import { getGlobalPreferences } from "@lib/globalStore";
+import { getSiloByName } from "@lib/silos";
 import type { Preferences, Silo } from "../../../../types/types";
-import { getSiloPrice } from "../../../../helpers/calculatePrice";
-import AsktButton from "../../../../components/AsktButton.astro";
+import { getSiloPrice } from "@helpers/calculatePrice";
+import AsktButton from "@components/AsktButton.astro";
+import SiloDescription from "@components/SiloDescription.astro";
+import SiloDescriptionWithOptions from "@components/SiloDescriptionWithOptions.astro";
+import { formatPrices } from "@helpers/formatData";
 
 const { name } = Astro.params;
 
@@ -22,18 +25,18 @@ try {
   console.error("Error al obtener silos o preferencias:", err);
 }
 
-let formattedPrice;
+let formattedPrice: string | null = null;
+let price: number | null = null;
+
 if (preferences && silo) {
-  const price = name ? getSiloPrice(name, preferences, silo) : 0;
-  formattedPrice = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-    minimumFractionDigits: 0,
-  }).format(price);
+  price = name ? getSiloPrice(name, preferences, silo) : 0;
+  formattedPrice = formatPrices(price);
 }
 ---
 
-<Layout>
+<Layout
+  title={`Remeco - Silo de ${silo?.name}`}
+  description={`Remeco - Silo ${silo?.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo?.name.replace("tn".toLocaleLowerCase(), " Toneladas")}. Envíos a todo el país. Opciones de financiación. Servicio pre y post venta`}>
   {
     silo ? (
       <>
@@ -46,24 +49,44 @@ if (preferences && silo) {
           typeLink={`/silos/${silo.silo_type}`}
         />
         <main class="p-4 lg:p-16 md:p-12 w-full">
-          <section>
-            <h1>
-              {`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
-            </h1>
-            <img
-              src={silo.image_url}
-              alt={silo.name}
-              class="rounded-2xl shadow-md w-full max-w-[600px] object-cover"
-            />
-            <p class="text-gray-700">{silo.description}</p>
+          <section class="flex md:flex-row flex-col w-full bg-stone-200 rounded gap-4 md:gap-0">
+            <div class="rounded md:w-1/2">
+              <img
+                src={silo.image_url}
+                alt={silo.name}
+                class="rounded shadow-md w-full max-w-[600px] object-cover"
+              />
+            </div>
 
-            <p class="text-lg font-semibold text-slate-800">
-              Precio: {formattedPrice}
-            </p>
-            <p>Incluye IVA {preferences?.iva_percentage}%</p>
-            <AsktButton
-              silo={`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
-            />
+            <article class="p-8 flex flex-col justify-evenly md:1/2 gap-4 md:gap-0">
+              <h1 class="md:!text-2xl !text-lg text-slate-900 uppercase md:max-w-[70%] max-w-full">
+                {`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
+              </h1>
+              {preferences?.iva_percentage && (
+                <>
+                  {silo.has_options ? (
+                    <SiloDescriptionWithOptions
+                      options={silo.options}
+                      cone_base_45={preferences.cone_base_45}
+                      cone_base_55={preferences.cone_base_55}
+                      description={silo.description}
+                      iva_percentage={preferences.iva_percentage}
+                      price={price ?? 0}
+                    />
+                  ) : (
+                    <SiloDescription
+                      description={silo.description}
+                      iva_percentage={preferences.iva_percentage}
+                      price={formattedPrice ?? "0"}
+                    />
+                  )}
+                </>
+              )}
+              <AsktButton
+                style="primary"
+                silo={`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
+              />
+            </article>
           </section>
         </main>
       </>

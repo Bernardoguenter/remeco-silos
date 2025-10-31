@@ -1,9 +1,9 @@
 ---
-import ContactDataInfo from "../../components/ContactDataInfo.astro";
-import ContactForm from "../../components/Form/ContactForm.astro";
-import GoogleMap from "../../components/GoogleMap.astro";
-import PageTitle from "../../components/PageTitle.astro";
-import Layout from "../../layouts/Layout.astro";
+import ContactDataInfo from "@components/ContactDataInfo.astro";
+import ContactForm from "@components/Form/ContactForm.astro";
+import GoogleMap from "@components/GoogleMap.astro";
+import PageTitle from "@components/PageTitle.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
@@ -13,10 +13,10 @@ import Layout from "../../layouts/Layout.astro";
       class="py-4 flex md:flex-row flex-col-reverse justify-between w-full gap-8 md:gap-12 lg:gap-16">
       <article class="w-full md:w-1/2">
         <h2 class="font-semibold mb-4">Ubicación y Contactos</h2>
-        <div class="w-full max-h-[400px] rounded mb-8">
+        <ContactDataInfo />
+        <div class="w-full ] rounded mb-8">
           <GoogleMap />
         </div>
-        <ContactDataInfo />
       </article>
       <article class="w-full md:w-1/2">
         <h2 class="font-semibold mb-4">Dejanos tu mensaje</h2>

@@ -1,9 +1,15 @@
 ---
-import Footer from "../components/Footer/Footer.astro";
-import Fonts from "../components/head/Fonts.astro";
-import Header from "../components/Nav/Header.astro";
-import WhatsappButton from "../components/WhatsappButton.astro";
-import "../styles/global.css";
+import Footer from "@components/Footer/Footer.astro";
+import Fonts from "@components/head/Fonts.astro";
+import Header from "@components/Nav/Header.astro";
+import WhatsappButton from "@components/WhatsappButton.astro";
+import "@styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+const {
+  title = "Remeco - Silos",
+  description = "Sitio web de Remeco Silos. Silos aéreos y silos comederos autoconsumo. Envíos a todo el país. Servicio pre y post venta. Opciones de financiación.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +26,12 @@ import "../styles/global.css";
       name="generator"
       content={Astro.generator}
     />
-    <title>Remeco - Silos</title>
+    <meta
+      name="description"
+      content={description}
+    />
+    <title>{title}</title>
+    <ClientRouter />
   </head>
   <body class="flex flex-col min-h-[100vh]">
     <Header />
