@@ -5,7 +5,21 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        "@components": "/src/components",
+        "@assets": "/src/assets",
+        "@actions": "/src/actions",
+        "@helpers": "/src/helpers",
+        "@layouts": "/src/layouts",
+        "@lib": "/src/lib",
+        "@pages": "/src/pages",
+        "@styles": "/src/styles",
+      },
+    },
+  },
   output: "server",
   adapter: vercel({
     imageService: false,
