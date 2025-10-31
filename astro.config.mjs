@@ -7,16 +7,25 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    assetsInclude: [
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.png",
+      "**/*.webp",
+      "**/*.avif",
+      "**/*.svg",
+    ],
+
     resolve: {
       alias: {
         "@components": "/src/components",
-        "@assets": "/srcassets",
         "@actions": "/src/actions",
         "@helpers": "/src/helpers",
         "@layouts": "/src/layouts",
         "@lib": "/src/lib",
         "@pages": "/src/pages",
         "@styles": "/src/styles",
+        "@assets": "/src/assets",
       },
     },
   },
