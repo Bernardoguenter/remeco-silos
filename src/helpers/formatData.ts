@@ -1,5 +1,7 @@
 export const formatPrices = (price: number) => {
-  new Intl.NumberFormat("es-AR", {
+  if (isNaN(price)) return "$0";
+
+  return new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
     minimumFractionDigits: 0,

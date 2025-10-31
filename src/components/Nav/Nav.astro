@@ -1,9 +1,8 @@
 ---
 import MenuItem from "./MenuItem.astro";
-import menuIcon from "../../assets/menu-icon.svg";
-import closeIcon from "../../assets/close-icon.svg";
-import { Image } from "astro:assets";
 import MenuItemMobile from "./MenuItemMobile.astro";
+import MenuIcon from "@assets/svg/MenuIcon.astro";
+import CloseIcon from "@assets/svg/CloseIcon.astro";
 ---
 
 <!-- NAV DESKTOP -->
@@ -30,19 +29,15 @@ import MenuItemMobile from "./MenuItemMobile.astro";
   <div
     id="menu-toggle"
     class="cursor-pointer z-50 relative w-7 h-7">
-    <Image
-      src={menuIcon}
-      alt="Abrir menú"
-      width={28}
+    <MenuIcon
+      style="absolute opacity-100"
+      color="#f5f5f5"
       id="icon-menu"
-      class="absolute top-0 left-0 transition-opacity duration-200 opacity-100"
     />
-    <Image
-      src={closeIcon}
-      alt="Cerrar menú"
-      width={28}
+    <CloseIcon
+      style="absolute opacity-0"
+      color="#f5f5f5"
       id="icon-close"
-      class="absolute top-0 left-0 transition-opacity duration-200 opacity-0"
     />
   </div>
 
@@ -67,60 +62,60 @@ import MenuItemMobile from "./MenuItemMobile.astro";
 </nav>
 
 <script>
-  const toggleBtn = document.getElementById("menu-toggle");
-  const iconMenu = document.getElementById("icon-menu");
-  const iconClose = document.getElementById("icon-close");
-  const mobileMenu = document.getElementById("mobile-menu-ul");
-  const menuLinks = mobileMenu?.querySelectorAll("a");
-  let isOpen = false;
+  document.addEventListener("astro:page-load", () => {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const iconMenu = document.getElementById("icon-menu");
+    const iconClose = document.getElementById("icon-close");
+    const mobileMenu = document.getElementById("mobile-menu-ul");
+    const menuLinks = mobileMenu?.querySelectorAll("a");
+    let isOpen = false;
 
-  const openMenu = () => {
-    mobileMenu?.classList.remove("hidden", "opacity-0", "translate-y-2");
-    mobileMenu?.classList.add("flex", "opacity-100", "translate-y-0");
+    const openMenu = () => {
+      mobileMenu?.classList.remove("hidden", "opacity-0", "translate-y-2");
+      mobileMenu?.classList.add("flex", "opacity-100", "translate-y-0");
 
-    // Cambiar íconos usando opacidad
-    iconMenu?.classList.remove("opacity-100");
-    iconMenu?.classList.add("opacity-0");
+      iconMenu?.classList.remove("opacity-100");
+      iconMenu?.classList.add("opacity-0");
 
-    iconClose?.classList.remove("opacity-0");
-    iconClose?.classList.add("opacity-100");
+      iconClose?.classList.remove("opacity-0");
+      iconClose?.classList.add("opacity-100");
 
-    isOpen = true;
-  };
+      isOpen = true;
+    };
 
-  const closeMenu = () => {
-    mobileMenu?.classList.add("opacity-0", "translate-y-2");
-    setTimeout(() => {
-      mobileMenu?.classList.add("hidden");
-      mobileMenu?.classList.remove("flex");
-    }, 200);
+    const closeMenu = () => {
+      mobileMenu?.classList.add("opacity-0", "translate-y-2");
+      setTimeout(() => {
+        mobileMenu?.classList.add("hidden");
+        mobileMenu?.classList.remove("flex");
+      }, 200);
 
-    // Cambiar íconos usando opacidad
-    iconMenu?.classList.remove("opacity-0");
-    iconMenu?.classList.add("opacity-100");
+      iconMenu?.classList.remove("opacity-0");
+      iconMenu?.classList.add("opacity-100");
 
-    iconClose?.classList.remove("opacity-100");
-    iconClose?.classList.add("opacity-0");
+      iconClose?.classList.remove("opacity-100");
+      iconClose?.classList.add("opacity-0");
 
-    isOpen = false;
-  };
+      isOpen = false;
+    };
 
-  toggleBtn?.addEventListener("click", () => {
-    isOpen ? closeMenu() : openMenu();
-  });
+    toggleBtn?.addEventListener("click", () => {
+      isOpen ? closeMenu() : openMenu();
+    });
 
-  menuLinks?.forEach((link) => {
-    link.addEventListener("click", () => closeMenu());
-  });
+    menuLinks?.forEach((link) => {
+      link.addEventListener("click", () => closeMenu());
+    });
 
-  document.addEventListener("click", (e) => {
-    if (
-      isOpen &&
-      !mobileMenu?.contains(e.target as Node) &&
-      e.target !== toggleBtn &&
-      !toggleBtn?.contains(e.target as Node)
-    ) {
-      closeMenu();
-    }
+    document.addEventListener("click", (e) => {
+      if (
+        isOpen &&
+        !mobileMenu?.contains(e.target as Node) &&
+        e.target !== toggleBtn &&
+        !toggleBtn?.contains(e.target as Node)
+      ) {
+        closeMenu();
+      }
+    });
   });
 </script>

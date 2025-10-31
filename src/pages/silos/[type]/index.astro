@@ -1,8 +1,8 @@
 ---
-import GridCard from "../../../components/GridCard.astro";
-import PageTitle from "../../../components/PageTitle.astro";
-import Layout from "../../../layouts/Layout.astro";
-import { getSilosByType } from "../../../lib/silos";
+import GridCard from "@components/GridCard.astro";
+import PageTitle from "@components/PageTitle.astro";
+import Layout from "@layouts/Layout.astro";
+import { getSilosByType } from "@lib/silos";
 import type { Silo } from "../../../types/types";
 
 const { type } = Astro.params;
@@ -16,7 +16,9 @@ if (type)
   }
 ---
 
-<Layout>
+<Layout
+  title={`Remeco - Silos`}
+  description=`Silo ${type === "aereos" ? "base aérea" : "comedero autoconsumo"}. Envíos a todo el país. Opciones de financiación. Servicio personalizado pre y post venta.`>
   <PageTitle
     pageTitle={type === "comederos" ? "Silos Comederos" : "Silos Aéreos"}
   />

@@ -1,8 +1,8 @@
 ---
-import silosAereos from "../../assets/silos-aereos.jpg";
-import silosComederos from "../../assets/silos-comederos.jpg";
+import silosAereos from "@assets/silos-aereos.jpg";
+import silosComederos from "@assets/silos-comederos.jpg";
 import { Picture } from "astro:assets";
-import ArrowDropDown from "../../assets/svg/ArrowDropDown.astro";
+import ArrowDropDown from "@assets/svg/ArrowDropDown.astro";
 
 interface Props {
   link: string;
@@ -45,7 +45,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
             src={silosAereos}
             layout="constrained"
             width={220}
-            class="rounded"
+            class="rounded aspect-square"
           />
           Silos Aéreos
         </a>
@@ -69,42 +69,44 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
 }
 
 <script>
-  const arrowBtn = document.getElementById(`silos-arrow`);
-  const dropdown = document.getElementById(`silos-dropdown`);
+  document.addEventListener("astro:page-load", () => {
+    const arrowBtn = document.getElementById(`silos-arrow`);
+    const dropdown = document.getElementById(`silos-dropdown`);
 
-  if (arrowBtn && dropdown && window.innerWidth < 1024) {
-    let isOpen = false;
+    if (arrowBtn && dropdown && window.innerWidth < 1024) {
+      let isOpen = false;
 
-    arrowBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
+      arrowBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
 
-      if (!isOpen) {
-        // Mostrar menú
-        dropdown.classList.remove("hidden");
-        dropdown.classList.add("flex");
-        arrowBtn.classList.add("rotate-180"); // rota la flecha
-        isOpen = true;
-      } else {
-        // Ocultar menú
-        dropdown.classList.add("hidden");
-        dropdown.classList.remove("flex");
-        arrowBtn.classList.remove("rotate-180");
-        isOpen = false;
-      }
-    });
+        if (!isOpen) {
+          // Mostrar menú
+          dropdown.classList.remove("hidden");
+          dropdown.classList.add("flex");
+          arrowBtn.classList.add("rotate-180"); // rota la flecha
+          isOpen = true;
+        } else {
+          // Ocultar menú
+          dropdown.classList.add("hidden");
+          dropdown.classList.remove("flex");
+          arrowBtn.classList.remove("rotate-180");
+          isOpen = false;
+        }
+      });
 
-    // Cerrar si se hace click fuera del menú
-    document.addEventListener("click", (e) => {
-      if (
-        isOpen &&
-        !dropdown.contains(e.target as Node) &&
-        e.target !== arrowBtn
-      ) {
-        dropdown.classList.add("hidden");
-        dropdown.classList.remove("flex");
-        arrowBtn.classList.remove("rotate-180");
-        isOpen = false;
-      }
-    });
-  }
+      // Cerrar si se hace click fuera del menú
+      document.addEventListener("click", (e) => {
+        if (
+          isOpen &&
+          !dropdown.contains(e.target as Node) &&
+          e.target !== arrowBtn
+        ) {
+          dropdown.classList.add("hidden");
+          dropdown.classList.remove("flex");
+          arrowBtn.classList.remove("rotate-180");
+          isOpen = false;
+        }
+      });
+    }
+  });
 </script>

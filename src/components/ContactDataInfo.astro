@@ -1,8 +1,7 @@
 ---
-import { string } from "astro:schema";
-import AddressIcon from "../assets/svg/AddressIcon.astro";
-import EmailIcon from "../assets/svg/EmailIcon.astro";
-import PhoneIcon from "../assets/svg/PhoneIcon.astro";
+import AddressIcon from "@assets/svg/AddressIcon.astro";
+import EmailIcon from "@assets/svg/EmailIcon.astro";
+import PhoneIcon from "@assets/svg/PhoneIcon.astro";
 
 interface Props {
   textColor?: string;
@@ -12,8 +11,8 @@ interface Props {
 const { textColor = "text-slate-800", iconColor } = Astro.props;
 ---
 
-<ul class=`flex flex-col items-center md:items-start gap-2 ${textColor}`>
-  <li class="flex items-center gap-1 text-center md:text-base text-sm">
+<ul class=`flex flex-col items-start gap-2 ${textColor} mb-8`>
+  <li class="flex md:items-center gap-1 text-center md:text-base text-sm">
     <PhoneIcon
       size="16"
       color={iconColor}

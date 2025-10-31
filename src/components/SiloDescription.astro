@@ -1,0 +1,24 @@
+---
+import StringToList from "./StringToList.astro";
+
+interface Props {
+  description: string;
+  price: string;
+  iva_percentage: number;
+}
+
+const { description, iva_percentage, price } = Astro.props;
+---
+
+<div>
+  <p class="mb-2 font-bold text-slate-900">Características:</p>
+  <StringToList inputString={description} />
+</div>
+<div>
+  <p class="text-lg font-semibold text-slate-800">
+    Precio: {price}
+  </p>
+  <p class="text-slate-800 !text-sm">
+    Incluye IVA {iva_percentage}%
+  </p>
+</div>

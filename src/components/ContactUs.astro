@@ -2,13 +2,14 @@
 import ButtonLink from "./ButtonLink.astro";
 ---
 
-<section class="section-container flex flex-col gap-10 bg-red-800">
+<section
+  class="section-container flex flex-col gap-10 bg-slate-800 lg:min-h-[40vh] justify-center">
   <h2 class="text-center text-gray-100">
     Escribinos y contactate con un representante
   </h2>
   <ButtonLink
     label="Enviar un mensaje"
     link="/contacto"
-    style="primary"
+    style="secondary"
   />
 </section>

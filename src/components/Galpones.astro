@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import silosAereos from "../assets/silos-comederos.jpg";
+import silosAereos from "@assets/silos-comederos.jpg";
+import ButtonLink from "./ButtonLink.astro";
 ---
 
 <section
@@ -18,7 +19,7 @@ import silosAereos from "../assets/silos-comederos.jpg";
     <h2 class="text-slate-900 font-bold text-2xl md:text-3xl lg:text-4xl mb-4">
       Galpones y Tinglados
     </h2>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 mb-8">
       <p class="text-slate-800">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
         repudiandae quos aut totam similique odio molestiae vitae sint animi
@@ -38,5 +39,10 @@ import silosAereos from "../assets/silos-comederos.jpg";
         deserunt numquam ullam?
       </p>
     </div>
+    <ButtonLink
+      label="Ir a la web"
+      link="#"
+      style="primary"
+    />
   </article>
 </section>

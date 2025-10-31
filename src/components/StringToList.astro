@@ -1,0 +1,21 @@
+---
+interface Props {
+  inputString: string;
+  textSize?: "text-xs" | "text-sm" | "text-md" | "text-base";
+}
+
+const { inputString, textSize = "text-base" } = Astro.props;
+
+const itemsArray = inputString
+  .split(",")
+  .map((item) => item.trim())
+  .filter((item) => item.length > 0);
+---
+
+<ul class={`flex flex-col ${textSize}`}>
+  {
+    itemsArray.map((item) => (
+      <li class="list-disc list-inside capitalize text-slate-800">{item}</li>
+    ))
+  }
+</ul>

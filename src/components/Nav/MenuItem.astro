@@ -1,8 +1,8 @@
 ---
-import silosAereos from "../../assets/silos-aereos.jpg";
-import silosComederos from "../../assets/silos-comederos.jpg";
+import silosAereos from "@assets/silos-aereos.jpg";
+import silosComederos from "@assets/silos-comederos.jpg";
 import { Picture, Image } from "astro:assets";
-import ArrowDropDown from "../../assets/svg/ArrowDropDown.astro";
+import ArrowDropDown from "@assets/svg/ArrowDropDown.astro";
 
 interface Props {
   link: string;
@@ -25,7 +25,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
   {
     isSubMenu && (
       <>
-        <ArrowDropDown />
+        <ArrowDropDown color="#ffffff" />
       </>
     )
   }
@@ -69,30 +69,36 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
 }
 
 <script>
-  const silosHoverComponent = document.getElementById("silos-hover");
-  const dropdownComponet = document.getElementById("dropdown-silos-menu");
-  let hideTimeout: ReturnType<typeof setTimeout>;
+  document.addEventListener("astro:page-load", () => {
+    const silosHoverComponent = document.getElementById("silos-hover");
+    const dropdownComponet = document.getElementById("dropdown-silos-menu");
+    let hideTimeout: ReturnType<typeof setTimeout>;
 
-  if (silosHoverComponent && dropdownComponet) {
-    const showDropdown = () => {
-      clearTimeout(hideTimeout);
-      dropdownComponet.classList.remove("hidden", "opacity-0", "translate-y-2");
-      dropdownComponet.classList.add("flex", "opacity-100", "translate-y-0");
-    };
+    if (silosHoverComponent && dropdownComponet) {
+      const showDropdown = () => {
+        clearTimeout(hideTimeout);
+        dropdownComponet.classList.remove(
+          "hidden",
+          "opacity-0",
+          "translate-y-2"
+        );
+        dropdownComponet.classList.add("flex", "opacity-100", "translate-y-0");
+      };
 
-    const hideDropdown = () => {
-      hideTimeout = setTimeout(() => {
-        dropdownComponet.classList.add("opacity-0", "translate-y-2");
-        setTimeout(() => {
-          dropdownComponet.classList.add("hidden");
-          dropdownComponet.classList.remove("flex");
+      const hideDropdown = () => {
+        hideTimeout = setTimeout(() => {
+          dropdownComponet.classList.add("opacity-0", "translate-y-2");
+          setTimeout(() => {
+            dropdownComponet.classList.add("hidden");
+            dropdownComponet.classList.remove("flex");
+          }, 200);
         }, 200);
-      }, 200);
-    };
+      };
 
-    silosHoverComponent.addEventListener("mouseenter", showDropdown);
-    silosHoverComponent.addEventListener("mouseleave", hideDropdown);
-    dropdownComponet.addEventListener("mouseenter", showDropdown);
-    dropdownComponet.addEventListener("mouseleave", hideDropdown);
-  }
+      silosHoverComponent.addEventListener("mouseenter", showDropdown);
+      silosHoverComponent.addEventListener("mouseleave", hideDropdown);
+      dropdownComponet.addEventListener("mouseenter", showDropdown);
+      dropdownComponet.addEventListener("mouseleave", hideDropdown);
+    }
+  });
 </script>

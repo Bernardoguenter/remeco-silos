@@ -4,6 +4,8 @@ export interface Silo {
   image_url: string;
   silo_type: string;
   description: string;
+  has_options: boolean;
+  options: Record<string, string>;
 }
 
 export interface Preferences {
