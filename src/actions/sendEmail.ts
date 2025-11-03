@@ -25,9 +25,29 @@ export const sendEmail = defineAction({
         message: "El mensaje es obligatorio",
       })
       .min(1, "El mensaje es obligatorio"),
+    recaptchaToken: z.string(),
   }),
   async handler(input) {
     try {
+      const response = await fetch(
+        "https://www.google.com/recaptcha/api/siteverify",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            secret: import.meta.env.RECAPTCHA_API_KEY,
+            response: input.recaptchaToken,
+          }),
+        }
+      );
+
+      const result = await response.json();
+      if (!result.success || result.score < 0.5) {
+        throw new Error("Falló la verificación de reCAPTCHA");
+      }
+
       await resend.emails.send({
         from: "Mi HOUSE <onboarding@resend.dev>",
         to: ["delivered@resend.dev"],

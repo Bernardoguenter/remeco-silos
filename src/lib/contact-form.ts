@@ -1,3 +1,4 @@
+declare const grecaptcha: any;
 import { actions } from "astro:actions";
 import { isInputError } from "astro:actions";
 
@@ -29,6 +30,14 @@ document.addEventListener("astro:page-load", () => {
     });
 
     const formData = new FormData(form);
+
+    // Obtener el token de reCAPTCHA v3
+    const token = await grecaptcha.execute(import.meta.env.RECAPTCHA_API_KEY, {
+      action: "submit",
+    });
+    console.log(token);
+    formData.append("recaptchaToken", token);
+
     const result = await actions.sendEmail(formData);
 
     if (!result.error) {
