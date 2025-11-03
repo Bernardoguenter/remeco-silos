@@ -29,6 +29,24 @@ export const sendEmail = defineAction({
   }),
   async handler(input) {
     try {
+      // Validación básica del token para evitar llamadas inútiles a Google
+      if (!input.recaptchaToken || typeof input.recaptchaToken !== "string") {
+        console.error(
+          "reCAPTCHA token ausente o inválido:",
+          input.recaptchaToken
+        );
+        throw new Error("Token de reCAPTCHA ausente o inválido");
+      }
+      const token = input.recaptchaToken as string;
+
+      const recaptchaSecret = import.meta.env.RECAPTCHA_API_KEY;
+      if (!recaptchaSecret) {
+        console.error(
+          "RECAPTCHA_API_KEY (secret) no está definida en el servidor"
+        );
+        throw new Error("RECAPTCHA secret no configurada en el servidor");
+      }
+
       const response = await fetch(
         "https://www.google.com/recaptcha/api/siteverify",
         {
@@ -44,12 +62,21 @@ export const sendEmail = defineAction({
       );
 
       const result = await response.json();
-      if (!result.success || result.score < 0.5) {
-        throw new Error("Falló la verificación de reCAPTCHA");
+      if (
+        !result.success ||
+        (typeof result.score === "number" && result.score < 0.5)
+      ) {
+        console.error("reCAPTCHA verification failed. Details:", result);
+        const errors = result["error-codes"]
+          ? result["error-codes"].join(", ")
+          : undefined;
+        throw new Error(
+          `Falló la verificación de reCAPTCHA${errors ? `: ${errors}` : ""}`
+        );
       }
 
       await resend.emails.send({
-        from: "Mi HOUSE <onboarding@resend.dev>",
+        from: "Remeco Silos <onboarding@resend.dev>",
         to: ["delivered@resend.dev"],
         subject: "Nuevo mensaje de contacto desde Silos",
         html: `
