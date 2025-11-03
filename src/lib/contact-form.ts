@@ -32,9 +32,12 @@ document.addEventListener("astro:page-load", () => {
     const formData = new FormData(form);
 
     // Obtener el token de reCAPTCHA v3
-    const token = await grecaptcha.execute(import.meta.env.RECAPTCHA_API_KEY, {
-      action: "submit",
-    });
+    const token = await grecaptcha.execute(
+      import.meta.env.PUBLIC_RECAPTCHA_API_KEY,
+      {
+        action: "submit",
+      }
+    );
     console.log(token);
     formData.append("recaptchaToken", token);
 
