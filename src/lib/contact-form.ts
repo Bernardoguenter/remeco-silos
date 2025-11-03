@@ -31,14 +31,34 @@ document.addEventListener("astro:page-load", () => {
 
     const formData = new FormData(form);
 
-    // Obtener el token de reCAPTCHA v3
+    if (!import.meta.env.PUBLIC_RECAPTCHA_API_KEY) {
+      console.error("PUBLIC_RECAPTCHA_API_KEY no está definida en el cliente");
+    }
+
+    await new Promise<void>((resolve) => {
+      grecaptcha.ready(resolve);
+    });
+
     const token = await grecaptcha.execute(
       import.meta.env.PUBLIC_RECAPTCHA_API_KEY,
-      {
-        action: "submit",
-      }
+      { action: "submit" }
     );
-    console.log(token);
+
+    // Validaciones/Logs para depuración: no imprimir token completo en producción
+    if (!token) {
+      console.error("No se pudo generar el token de reCAPTCHA");
+      showMessage(errorMsg, true);
+      submitBtn.disabled = false;
+      return;
+    }
+
+    if (!token) {
+      console.error("No se pudo generar el token de reCAPTCHA");
+      showMessage(errorMsg, true);
+      submitBtn.disabled = false;
+      return;
+    }
+
     formData.append("recaptchaToken", token);
 
     const result = await actions.sendEmail(formData);
