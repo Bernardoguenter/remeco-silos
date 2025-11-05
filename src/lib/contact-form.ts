@@ -44,14 +44,6 @@ document.addEventListener("astro:page-load", () => {
       { action: "submit" }
     );
 
-    // Validaciones/Logs para depuración: no imprimir token completo en producción
-    if (!token) {
-      console.error("No se pudo generar el token de reCAPTCHA");
-      showMessage(errorMsg, true);
-      submitBtn.disabled = false;
-      return;
-    }
-
     if (!token) {
       console.error("No se pudo generar el token de reCAPTCHA");
       showMessage(errorMsg, true);

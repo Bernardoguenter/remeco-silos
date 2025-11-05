@@ -1,9 +1,9 @@
 ---
-import GridCard from "@components/GridCard.astro";
 import PageTitle from "@components/PageTitle.astro";
 import Layout from "@layouts/Layout.astro";
 import { getSilosByType } from "@lib/silos";
 import type { Silo } from "../../../types/types";
+import SiloList from "@components/SiloList.astro";
 
 const { type } = Astro.params;
 
@@ -23,23 +23,8 @@ if (type)
     pageTitle={type === "comederos" ? "Silos Comederos" : "Silos Aéreos"}
   />
   <main class="p-4 lg:p-16 md:p-12 w-full">
-    <section class="grid grid-cols-1 md:grid-cols-3 lg:gap-12 gap-6">
-      {
-        Array.isArray(silos) && silos.length > 0 ? (
-          silos.map((silo) => (
-            <GridCard
-              imageSrc={silo.image_url}
-              alt={silo.name}
-              title={silo.name}
-              imgWidth={500}
-              imgHeight={500}
-              link={`/silos/${silo.silo_type}/${silo.name}`}
-            />
-          ))
-        ) : (
-          <p>No hay silos disponibles.</p>
-        )
-      }
+    <section class="grid grid-cols-2 md:grid-cols-3 lg:gap-12 gap-6">
+      <SiloList silos={silos} />
     </section>
   </main>
 </Layout>
