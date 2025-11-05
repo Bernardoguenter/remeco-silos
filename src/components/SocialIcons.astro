@@ -1,0 +1,15 @@
+---
+import FacebookIcon from "@assets/svg/FacebookIcon.astro";
+import InstagramIcon from "@assets/svg/InstagramIcon.astro";
+
+interface Props {
+  iconColor: string;
+}
+
+const { iconColor } = Astro.props;
+---
+
+<div class="flex gap-2 justify-center md:justify-start mb-8">
+  <FacebookIcon iconColor={iconColor} />
+  <InstagramIcon iconColor={iconColor} />
+</div>
