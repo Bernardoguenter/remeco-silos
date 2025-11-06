@@ -9,6 +9,7 @@ import "@styles/global.css";
 const {
   title = "Remeco - Silos",
   description = "Sitio web de Remeco Silos. Silos aéreos y silos comederos autoconsumo. Envíos a todo el país. Servicio pre y post venta. Opciones de financiación.",
+  tags = "Silos, Silos aéreos, Silos Base Aérea, Silos comederos, Silos comederos autoconsumo, Silos autoconsumo, Remeco, Metalúrgica Remeco",
 } = Astro.props;
 ---
 
@@ -25,6 +26,10 @@ const {
       type="image/svg+xml"
       href="/favicon.png"
     />
+    <link
+      rel="sitemap"
+      href="/sitemap-index.xml"
+    />
     <Fonts />
     <meta
       name="generator"
@@ -33,6 +38,10 @@ const {
     <meta
       name="description"
       content={description}
+    />
+    <meta
+      name="tags"
+      content={tags}
     />
     <title>{title}</title>
     <script
