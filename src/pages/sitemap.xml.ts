@@ -1,8 +1,10 @@
 import type { APIRoute } from "astro";
 import { getSilosByType } from "@lib/silos";
 
-export const GET: APIRoute = async () => {
-  const baseUrl = "https://silosremeco.com";
+export const GET: APIRoute = async ({ request }) => {
+  const baseUrl =
+    import.meta.env.PUBLIC_SITE_URL || new URL(request.url).origin;
+
   const staticRoutes = ["/", "/contacto", "/silos"];
   const siloTypes = ["aereos", "comederos"];
   const dynamicRoutes: string[] = [];
