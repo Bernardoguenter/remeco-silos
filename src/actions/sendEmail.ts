@@ -76,8 +76,8 @@ export const sendEmail = defineAction({
       }
 
       await resend.emails.send({
-        from: "Remeco Silos <onboarding@resend.dev>",
-        to: ["delivered@resend.dev"],
+        from: "Remeco Silos <noreply@silosremeco.com>",
+        to: ["juanmderosa@gmail.com"],
         subject: "Nuevo mensaje de contacto desde Silos",
         html: `
           <h2>Mensaje recibido desde el formulario</h2>
