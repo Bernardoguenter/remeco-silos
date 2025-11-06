@@ -10,7 +10,6 @@
     "lint": "eslint 'src/**/*.{js,astro,ts}'"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^8.2.10",
     "@supabase/supabase-js": "^2.76.1",
     "@tailwindcss/vite": "^4.1.14",
