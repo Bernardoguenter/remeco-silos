@@ -69,7 +69,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
 }
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  function manageMobileDropdown() {
     const arrowBtn = document.getElementById(`silos-arrow`);
     const dropdown = document.getElementById(`silos-dropdown`);
 
@@ -80,13 +80,11 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
         e.stopPropagation();
 
         if (!isOpen) {
-          // Mostrar menú
           dropdown.classList.remove("hidden");
           dropdown.classList.add("flex");
-          arrowBtn.classList.add("rotate-180"); // rota la flecha
+          arrowBtn.classList.add("rotate-180");
           isOpen = true;
         } else {
-          // Ocultar menú
           dropdown.classList.add("hidden");
           dropdown.classList.remove("flex");
           arrowBtn.classList.remove("rotate-180");
@@ -94,7 +92,6 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
         }
       });
 
-      // Cerrar si se hace click fuera del menú
       document.addEventListener("click", (e) => {
         if (
           isOpen &&
@@ -108,5 +105,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
         }
       });
     }
-  });
+  }
+  document.addEventListener("astro:page-load", manageMobileDropdown);
+  document.addEventListener("astro:before-preparation", manageMobileDropdown);
 </script>

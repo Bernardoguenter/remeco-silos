@@ -46,10 +46,22 @@ const {
     <title>{title}</title>
     <script
       is:inline
+      id="recaptcha-script"
       src={`https://www.google.com/recaptcha/api.js?render=${import.meta.env.PUBLIC_RECAPTCHA_API_KEY}`}
       async
       defer
     ></script>
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        if (!window.grecaptcha) {
+          const script = document.getElementById("recaptcha-script");
+          if (script) {
+            const clone = script.cloneNode(true);
+            script.replaceWith(clone);
+          }
+        }
+      });
+    </script>
     <ClientRouter />
   </head>
   <body class="flex flex-col min-h-[100vh]">

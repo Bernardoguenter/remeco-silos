@@ -30,7 +30,7 @@ let price: number | null = null;
 
 if (preferences && silo) {
   price = name ? getSiloPrice(name, preferences, silo) : 0;
-  formattedPrice = formatPrices(price);
+  formattedPrice = formatPrices(Math.floor(price));
 }
 ---
 
