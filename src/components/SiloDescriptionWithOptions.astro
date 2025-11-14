@@ -1,6 +1,7 @@
 ---
 import { formatPrices } from "@helpers/formatData";
 import StringToList from "./StringToList.astro";
+import SiloPrice from "./SiloPrice.astro";
 
 interface Props {
   description: string;
@@ -42,14 +43,9 @@ const mappedOptions = Object.entries(options).map(([angle, detail]) => {
   <p class="mb-2 font-bold text-slate-900 text-xl">Características {silo.title}:</p>
   <StringToList inputString={silo.description} />
 </div>
-<div class="mb-6">
-  <p class="font-semibold text-slate-800 !text-xl">
-    Precio: {silo.price}
-  </p>
-  <p class="text-slate-800 !text-sm">
-    Incluye IVA {iva_percentage}%
-  </p>
-</div>
+<SiloPrice   iva_percentage={iva_percentage}
+  price={silo.price}/>
+
   
 ))
 }

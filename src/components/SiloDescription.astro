@@ -1,4 +1,5 @@
 ---
+import SiloPrice from "./SiloPrice.astro";
 import StringToList from "./StringToList.astro";
 
 interface Props {
@@ -14,11 +15,7 @@ const { description, iva_percentage, price } = Astro.props;
   <p class="mb-2 font-bold text-slate-900 !text-xl">Características:</p>
   <StringToList inputString={description} />
 </div>
-<div>
-  <p class="font-semibold text-slate-800 !text-xl">
-    Precio: {price}
-  </p>
-  <p class="text-slate-800 !text-sm">
-    Incluye IVA {iva_percentage}%
-  </p>
-</div>
+<SiloPrice
+  iva_percentage={iva_percentage}
+  price={price}
+/>
