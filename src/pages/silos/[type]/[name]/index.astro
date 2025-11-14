@@ -49,19 +49,17 @@ if (preferences && silo) {
           typeLink={`/silos/${silo.silo_type}`}
         />
         <main class="p-4 lg:p-16 md:p-12 w-full">
-          <section class="flex md:flex-row flex-col w-full bg-stone-200 rounded gap-4 md:gap-0">
+          <section class="w-full flex md:flex-row flex-col lg:gap-8 gap-4">
             <div class="rounded md:w-1/2">
               <img
                 src={silo.image_url}
                 alt={silo.name}
-                class="rounded shadow-md w-full max-w-[600px] object-cover"
+                class="rounded shadow-md w-full  object-cover"
               />
             </div>
 
-            <article class="p-8 flex flex-col justify-evenly md:1/2 gap-4 md:gap-0">
-              <h1 class="md:!text-2xl !text-lg text-slate-900 uppercase md:max-w-[70%] max-w-full">
-                {`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
-              </h1>
+            <aside class="md:w-1/2 p-4">
+              <h2 class="mb-4 text-slate-800">{`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}</h2>
               {preferences?.iva_percentage && (
                 <>
                   {silo.has_options ? (
@@ -82,11 +80,13 @@ if (preferences && silo) {
                   )}
                 </>
               )}
-              <AsktButton
-                style="primary"
-                silo={`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
-              />
-            </article>
+              <div class="mt-8 w-full flex justify-center px-8">
+                <AsktButton
+                  style="primary"
+                  silo={`Silo ${silo.silo_type === "aereos" ? "base aérea" : "comedero autoconsumo"} de ${silo.name.replace("tn".toLocaleLowerCase(), " Toneladas")}`}
+                />
+              </div>
+            </aside>
           </section>
         </main>
       </>

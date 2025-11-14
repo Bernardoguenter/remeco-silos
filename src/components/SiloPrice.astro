@@ -1,0 +1,11 @@
+---
+const { iva_percentage, price } = Astro.props;
+---
+
+<div class="my-6 border border-slate-800 rounded py-1 px-2 w-max">
+  <p
+    class="font-semibold text-slate-800 !text-xl text-center items-center flex gap-2">
+    Precio: {price}
+    <span class="!text-sm font-normal"> (Incluye IVA {iva_percentage}%)</span>
+  </p>
+</div>
