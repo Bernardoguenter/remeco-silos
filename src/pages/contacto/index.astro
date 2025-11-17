@@ -25,3 +25,12 @@ import Layout from "@layouts/Layout.astro";
     </section>
   </main>
 </Layout>
+
+<script
+  is:inline
+  data-astro-rerun
+  id="recaptcha-script"
+  src={`https://www.google.com/recaptcha/api.js?render=${import.meta.env.PUBLIC_RECAPTCHA_API_KEY}`}
+  async
+  defer
+></script>
