@@ -1,4 +1,6 @@
 ---
+import { late } from "astro:schema";
+
 interface Props {
   link: string;
   label: string;
@@ -10,6 +12,7 @@ const { link, label, styles = "" } = Astro.props;
 
 <li class={`uppercase text-stone-200 flex items-center relative ${styles}`}>
   <a
+    title={label}
     href={link}
     class="text-stone-200 text-sm">
     {label}
