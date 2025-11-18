@@ -1,9 +1,9 @@
 import type { APIRoute } from "astro";
 import { getSilosByType } from "@lib/silos";
+import { config } from "@config/config";
 
 export const GET: APIRoute = async ({ request }) => {
-  const baseUrl =
-    import.meta.env.PUBLIC_SITE_URL || new URL(request.url).origin;
+  const baseUrl = config.public_site_url || new URL(request.url).origin;
 
   const staticRoutes = ["/", "/contacto", "/silos"];
   const siloTypes = ["aereos", "comederos"];

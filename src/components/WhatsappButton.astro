@@ -21,8 +21,10 @@ import { Image } from "astro:assets";
 </style>
 
 <script>
+  import { config } from "@config/config";
+
   document.addEventListener("astro:page-load", () => {
-    const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
+    const whatsappNumber = config.wa_number;
     const btn = document.getElementById("wa-btn") as HTMLButtonElement;
     btn.addEventListener("click", () => {
       window.open(

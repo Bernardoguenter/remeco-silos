@@ -1,6 +1,7 @@
 declare const grecaptcha: any;
 import { actions } from "astro:actions";
 import { isInputError } from "astro:actions";
+import { config } from "@config/config";
 
 document.addEventListener("astro:page-load", () => {
   const form = document.getElementById("contact-form") as HTMLFormElement;
@@ -31,7 +32,7 @@ document.addEventListener("astro:page-load", () => {
 
     const formData = new FormData(form);
 
-    if (!import.meta.env.PUBLIC_RECAPTCHA_API_KEY) {
+    if (!config.recaptcha_api_key) {
       console.error("PUBLIC_RECAPTCHA_API_KEY no está definida en el cliente");
     }
 
@@ -39,10 +40,9 @@ document.addEventListener("astro:page-load", () => {
       grecaptcha.ready(resolve);
     });
 
-    const token = await grecaptcha.execute(
-      import.meta.env.PUBLIC_RECAPTCHA_API_KEY,
-      { action: "submit" }
-    );
+    const token = await grecaptcha.execute(config.recaptpcha_api_key_public, {
+      action: "submit",
+    });
 
     if (!token) {
       console.error("No se pudo generar el token de reCAPTCHA");
