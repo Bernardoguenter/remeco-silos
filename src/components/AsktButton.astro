@@ -1,10 +1,11 @@
 ---
+import { config } from "@config/config";
 interface Props {
   silo: string;
   style?: "primary" | "secondary";
 }
 
-const whatsappNumber = import.meta.env.PUBLIC_WA_NUMBER;
+const whatsappNumber = config.wa_number;
 const { silo, style } = Astro.props;
 
 const baseClasses =

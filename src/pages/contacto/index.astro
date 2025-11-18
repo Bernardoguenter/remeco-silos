@@ -4,6 +4,7 @@ import ContactForm from "@components/Form/ContactForm.astro";
 import GoogleMap from "@components/GoogleMap.astro";
 import PageTitle from "@components/PageTitle.astro";
 import Layout from "@layouts/Layout.astro";
+import { config } from "@config/config";
 ---
 
 <Layout>
@@ -30,7 +31,7 @@ import Layout from "@layouts/Layout.astro";
   is:inline
   data-astro-rerun
   id="recaptcha-script"
-  src={`https://www.google.com/recaptcha/api.js?render=${import.meta.env.PUBLIC_RECAPTCHA_API_KEY}`}
+  src={`https://www.google.com/recaptcha/api.js?render=${config.recaptpcha_api_key_public}`}
   async
   defer
 ></script>

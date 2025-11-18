@@ -1,8 +1,9 @@
 import { defineAction, ActionError } from "astro:actions";
 import { z } from "astro:schema";
 import { Resend } from "resend";
+import { config } from "@config/config";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const resend = new Resend(config.resend_api_key);
 
 export const sendEmail = defineAction({
   accept: "form",
@@ -39,7 +40,7 @@ export const sendEmail = defineAction({
       }
       const token = input.recaptchaToken as string;
 
-      const recaptchaSecret = import.meta.env.RECAPTCHA_API_KEY;
+      const recaptchaSecret = config.recaptcha_api_key;
       if (!recaptchaSecret) {
         console.error(
           "RECAPTCHA_API_KEY (secret) no está definida en el servidor"
@@ -55,7 +56,7 @@ export const sendEmail = defineAction({
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams({
-            secret: import.meta.env.RECAPTCHA_API_KEY,
+            secret: config.recaptcha_api_key,
             response: input.recaptchaToken,
           }),
         }
