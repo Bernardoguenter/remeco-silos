@@ -16,6 +16,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
   class={`uppercase text-slate-800 flex items-center relative ${styles} border-b border-b-stone-200 w-full`}
   id={isSubMenu ? `${label.toLowerCase()}-item` : ""}>
   <a
+    title={label}
     href={link}
     class="text-stone-200 md:text-slate-800 text-right w-full">
     {label}
@@ -36,6 +37,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
       class="hidden bg-slate-800 border-b border-b-stone-200 w-full text-white py-2 px-4  items-center gap-4 transition-all duration-300 ease-out">
       <article class="flex flex-col items-center justify-center gap-1">
         <a
+          title="Silos Aéreos"
           href="/silos/aereos"
           class="text-center">
           <Picture
@@ -51,6 +53,7 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
       </article>
       <article class="flex flex-col items-center justify-center gap-1">
         <a
+          title="Silos Comederos"
           href="/silos/comederos"
           class="text-center">
           <Picture

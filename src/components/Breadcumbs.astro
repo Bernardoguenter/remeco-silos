@@ -11,7 +11,15 @@ const { base, type, baseLink, typeLink } = Astro.props;
 
 <h2
   class="border-b border-b-stone-200 text-slate-800 w-full section-container !text-base uppercase">
-  <a href={baseLink.startsWith("/") ? baseLink : `/${baseLink}`}>{base}</a>
+  <a
+    href={baseLink.startsWith("/") ? baseLink : `/${baseLink}`}
+    title={base}
+    >{base}</a
+  >
   {" / "}
-  <a href={typeLink.startsWith("/") ? typeLink : `/${typeLink}`}>{type}</a>
+  <a
+    href={typeLink.startsWith("/") ? typeLink : `/${typeLink}`}
+    title={type}
+    >{type}</a
+  >
 </h2>
