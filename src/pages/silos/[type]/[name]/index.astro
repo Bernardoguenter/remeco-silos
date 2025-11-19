@@ -9,7 +9,7 @@ import AsktButton from "@components/AsktButton.astro";
 import SiloDescription from "@components/SiloDescription.astro";
 import SiloDescriptionWithOptions from "@components/SiloDescriptionWithOptions.astro";
 import { formatPrices } from "@helpers/formatData";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 const { name } = Astro.params;
 
@@ -52,7 +52,7 @@ if (preferences && silo) {
         <main class="p-4 lg:p-16 md:p-12 w-full">
           <section class="w-full flex md:flex-row flex-col lg:gap-8 gap-4">
             <div class="rounded md:w-1/2">
-              <Image
+              <Picture
                 src={silo.image_url}
                 alt={silo.name}
                 width={800}
@@ -60,6 +60,7 @@ if (preferences && silo) {
                 layout="constrained"
                 fit="cover"
                 class="rounded shadow-md w-full  object-cover"
+                formats={["avif", "webp"]}
               />
             </div>
 
