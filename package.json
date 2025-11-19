@@ -10,11 +10,13 @@
     "lint": "eslint 'src/**/*.{js,astro,ts}'"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.1",
     "@astrojs/vercel": "^9.0.0",
     "@supabase/supabase-js": "^2.76.1",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.15.4",
     "resend": "^6.2.2",
+    "sharp": "^0.34.5",
     "swiper": "^12.0.2",
     "tailwindcss": "^4.1.14"
   },
