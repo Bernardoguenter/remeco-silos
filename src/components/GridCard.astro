@@ -41,6 +41,9 @@ const {
           class="w-full h-full object-cover object-center"
           fit="cover"
           formats={["avif", "webp"]}
+          fetchpriority="high"
+          loading="lazy"
+          decoding="async"
         />
       ) : (
         <Picture
@@ -52,6 +55,9 @@ const {
           class="w-full h-full object-cover object-center"
           fit="cover"
           formats={["avif", "webp"]}
+          fetchpriority="high"
+          loading="lazy"
+          decoding="async"
         />
       )
     }
