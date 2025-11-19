@@ -1,8 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import ButtonLink from "./ButtonLink.astro";
 import silosAereos from "@assets/images/silos-aereos.jpg";
 import silosComederos from "@assets/images/silos-comederos.jpg";
+import { Picture } from "astro:assets";
 ---
 
 <section class="hero-section w-full">
@@ -12,7 +12,7 @@ import silosComederos from "@assets/images/silos-comederos.jpg";
       <div class="swiper-slide">
         <div class="slide-content">
           <div class="slide-image">
-            <Image
+            <Picture
               alt="Silos Aéreos"
               src={silosAereos}
               width={800}
@@ -20,6 +20,8 @@ import silosComederos from "@assets/images/silos-comederos.jpg";
               class="object-cover object-center w-full h-full"
               fetchpriority="high"
               layout="constrained"
+              formats={["avif", "webp"]}
+              fit="cover"
             />
           </div>
           <div class="slide-text">
@@ -40,7 +42,7 @@ import silosComederos from "@assets/images/silos-comederos.jpg";
       <div class="swiper-slide">
         <div class="slide-content">
           <div class="slide-image">
-            <Image
+            <Picture
               alt="Silos Comederos"
               src={silosComederos}
               width={800}
@@ -49,6 +51,7 @@ import silosComederos from "@assets/images/silos-comederos.jpg";
               fetchpriority="high"
               layout="constrained"
               fit="cover"
+              formats={["avif", "webp"]}
             />
           </div>
           <div class="slide-text">

@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import ArrowFoward from "@assets/svg/ArrowFoward.astro";
+import { Picture } from "astro:assets";
 
 interface Props {
   imageSrc: string | ImageMetadata;
@@ -32,7 +32,7 @@ const {
     class="flex-shrink-1 h-[250px] w-full">
     {
       typeof imageSrc === "string" ? (
-        <Image
+        <Picture
           src={imageSrc}
           alt={alt}
           width={imgWidth}
@@ -40,9 +40,10 @@ const {
           layout={layout}
           class="w-full h-full object-cover object-center"
           fit="cover"
+          formats={["avif", "webp"]}
         />
       ) : (
-        <Image
+        <Picture
           src={imageSrc}
           alt={alt}
           width={imgWidth}
@@ -50,6 +51,7 @@ const {
           layout={layout}
           class="w-full h-full object-cover object-center"
           fit="cover"
+          formats={["avif", "webp"]}
         />
       )
     }
