@@ -100,7 +100,11 @@ import MenuItemMobile from "./MenuItemMobile.astro";
     };
 
     toggleBtn?.addEventListener("click", () => {
-      isOpen ? closeMenu() : openMenu();
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
     menuLinks?.forEach((link) => {

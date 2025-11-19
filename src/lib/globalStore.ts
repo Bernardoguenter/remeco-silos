@@ -1,6 +1,7 @@
+import type { Preferences } from "../types/types";
 import { getPreferences } from "./preferences";
 
-let preferencesCache: any = null;
+let preferencesCache: Preferences | null = null;
 let lastFetch = 0;
 const TTL = 1000 * 60 * 5;
 

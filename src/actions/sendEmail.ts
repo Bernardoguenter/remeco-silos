@@ -38,7 +38,6 @@ export const sendEmail = defineAction({
         );
         throw new Error("Token de reCAPTCHA ausente o inválido");
       }
-      const token = input.recaptchaToken as string;
 
       const recaptchaSecret = config.recaptcha_api_key;
       if (!recaptchaSecret) {

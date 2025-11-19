@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const grecaptcha: any;
 import { actions } from "astro:actions";
 import { isInputError } from "astro:actions";
