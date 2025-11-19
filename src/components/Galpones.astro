@@ -1,18 +1,20 @@
 ---
 import { Image } from "astro:assets";
 import ButtonLink from "./ButtonLink.astro";
+import silosAereos from "@assets/images/silos-aereos.jpg";
 ---
 
 <section
   class="flex flex-col lg:flex-row lg:items-center lg:justify-between p-12 lg:p-0 gap-6">
   <aside class="lg:w-1/2 lg:h-full">
     <Image
-      src="/images/silos-aereos.jpg"
+      src={silosAereos}
       alt={"Sobre Nosotros"}
       width={800}
       height={800}
-      class="object-cover lg:w-full lg:h-full lg:rounded-r rounded"
+      class="g:w-full lg:h-full lg:rounded-r rounded"
       layout="constrained"
+      fit="cover"
     />
   </aside>
   <article class="lg:w-1/2 lg:p-16 p-0">

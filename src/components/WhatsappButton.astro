@@ -1,17 +1,19 @@
 ---
 import { Image } from "astro:assets";
+import WhatsappIcon from "@assets/images/whatsapp.svg";
 ---
 
 <button
   class="fixed md:bottom-5 bottom-3 md:right-5 right-3 z-50 rounded-full"
   id="wa-btn">
   <Image
-    src="/images/whatsapp.svg"
+    src={WhatsappIcon}
     alt="whatsapp icon"
     width={56}
     height={56}
     class="svg"
     layout="constrained"
+    fit="cover"
   />
 </button>
 

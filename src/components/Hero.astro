@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import ButtonLink from "./ButtonLink.astro";
+import silosAereos from "@assets/images/silos-aereos.jpg";
+import silosComederos from "@assets/images/silos-comederos.jpg";
 ---
 
 <section class="hero-section w-full">
@@ -12,7 +14,7 @@ import ButtonLink from "./ButtonLink.astro";
           <div class="slide-image">
             <Image
               alt="Silos Aéreos"
-              src="/images/silos-aereos.jpg"
+              src={silosAereos}
               width={800}
               height={800}
               class="object-cover object-center w-full h-full"
@@ -40,12 +42,13 @@ import ButtonLink from "./ButtonLink.astro";
           <div class="slide-image">
             <Image
               alt="Silos Comederos"
-              src="/images/silos-comederos.jpg"
+              src={silosComederos}
               width={800}
               height={800}
-              class="object-cover object-center w-full h-full"
+              class="object-center w-full h-full"
               fetchpriority="high"
               layout="constrained"
+              fit="cover"
             />
           </div>
           <div class="slide-text">

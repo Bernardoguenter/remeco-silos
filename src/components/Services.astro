@@ -1,5 +1,8 @@
 ---
 import IconAndText from "./IconAndText.astro";
+import paymentOptions from "@assets/images/payment-options.svg";
+import service from "@assets/images/service.svg";
+import shipping from "@assets/images/shipping.svg";
 ---
 
 <article
@@ -8,18 +11,18 @@ import IconAndText from "./IconAndText.astro";
     altText="Envíos a todo el país"
     textLine1="Envíos a todo"
     textLine2="el país"
-    image="/images/shipping.svg"
+    image={shipping}
   />
   <IconAndText
     altText="Opciones financiación"
     textLine1="Opciones de"
     textLine2="financiación"
-    image="/images/payment-options.svg"
+    image={paymentOptions}
   />
   <IconAndText
     altText="Servicio Personalizado"
     textLine1="Servicio Personalizado"
     textLine2="Pre y Post Venta"
-    image="/images/service.svg"
+    image={service}
   />
 </article>
