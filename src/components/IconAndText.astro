@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 
 interface IconAndText {
   altText: string;
-  image: string;
+  image: ImageMetadata;
   textLine1: string;
   textLine2: string;
 }
@@ -19,6 +19,7 @@ const { altText, image, textLine1, textLine2 } = Astro.props;
     height={200}
     class="max-w-[30px] lg:max-w-[50px]"
     layout="constrained"
+    fit="cover"
   />
   <div class="flex flex-col item">
     <h4 class="uppercase lg:text-left text-center">

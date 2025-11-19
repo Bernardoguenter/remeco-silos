@@ -1,11 +1,13 @@
 ---
 import GridCard from "./GridCard.astro";
+import silosAereos from "@assets/images/silos-aereos.jpg";
+import silosComederos from "@assets/images/silos-comederos.jpg";
 ---
 
 <main class="p-4 lg:p-16 md:p-12 w-full">
   <section class="grid grid-cols-1 md:grid-cols-2 lg:gap-12 gap-6">
     <GridCard
-      imageSrc="/images/silos-aereos.jpg"
+      imageSrc={silosAereos}
       alt="Silos Aéreos"
       title="Silos Aéreos"
       imgWidth={800}
@@ -13,9 +15,9 @@ import GridCard from "./GridCard.astro";
       link="/silos/aereos"
     />
     <GridCard
-      imageSrc="/images/silos-comederos.jpg"
+      imageSrc={silosComederos}
       alt="Silos Comederos"
-      title="Silos Comederos"
+      title={"Silos Comederos"}
       imgWidth={800}
       imgHeight={600}
       link="/silos/comederos"

@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import ArrowDropDown from "@assets/svg/ArrowDropDown.astro";
+import silosAereos from "@assets/images/silos-aereos.jpg";
+import silosComederos from "@assets/images/silos-comederos.jpg";
 
 interface Props {
   link: string;
@@ -42,11 +44,12 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
           class="text-center">
           <Image
             alt="silos aéreos"
-            src="/images/silos-aereos.jpg"
+            src={silosAereos}
             width={200}
             height={200}
-            class="rounded aspect-square "
+            class="rounded"
             layout="constrained"
+            fit="cover"
           />
           Silos Aéreos
         </a>
@@ -58,11 +61,12 @@ const { link, label, isSubMenu = false, styles = "" } = Astro.props;
           class="text-center">
           <Image
             alt="silos comederos"
-            src="/images/silos-comederos.jpg"
+            src={silosComederos}
             width={200}
             height={200}
-            class="rounded aspect-square"
+            class="rounded"
             layout="constrained"
+            fit="cover"
           />
           Silos Comederos
         </a>

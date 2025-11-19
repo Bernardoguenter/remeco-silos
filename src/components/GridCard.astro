@@ -32,12 +32,14 @@ const {
     class="flex-shrink-1 h-[250px] w-full">
     {
       typeof imageSrc === "string" ? (
-        <img
+        <Image
           src={imageSrc}
           alt={alt}
           width={imgWidth}
           height={imgHeight}
+          layout={layout}
           class="w-full h-full object-cover object-center"
+          fit="cover"
         />
       ) : (
         <Image
@@ -47,7 +49,7 @@ const {
           height={imgHeight}
           layout={layout}
           class="w-full h-full object-cover object-center"
-          layout="constrained"
+          fit="cover"
         />
       )
     }

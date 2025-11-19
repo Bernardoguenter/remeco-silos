@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import FooterNav from "./FooterNav.astro";
 import FooterContact from "./FooterContact.astro";
 import Services from "@components/Services.astro";
+import LogoRemecoBlanco from "@assets/images/LogoRemecoBlanco.png";
 ---
 
 <Services />
@@ -10,12 +11,13 @@ import Services from "@components/Services.astro";
   <div class="flex md:flex-row flex-col items-center md:gap-2 gap-6">
     <article class="md:w-1/3 w-full">
       <Image
-        src="/images/LogoRemecoBlanco.png"
+        src={LogoRemecoBlanco}
         alt={"Logo Metalúrgica Remeco"}
         width={500}
         height={500}
         class="md:m-0 m-auto max-w-[200px]"
         layout="constrained"
+        fit="cover"
       />
       +
     </article>

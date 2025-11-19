@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import Nav from "./Nav.astro";
+import LogoRemecoBlanco from "@assets/images/LogoRemecoBlanco.png";
 ---
 
 <header
@@ -9,10 +10,11 @@ import Nav from "./Nav.astro";
     title="Silos Remeco"
     href="/"
     ><Picture
-      src="/images/LogoRemecoBlanco.png"
+      src={LogoRemecoBlanco}
       alt="Logo Metalúrgica Remecó"
       class="max-w-[150px]"
       layout="constrained"
+      fit="cover"
       width={800}
       height={800}
     /></a
