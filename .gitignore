@@ -18,6 +18,11 @@ pnpm-debug.log*
 
 # environment variables
 .env
+
+# testing
+coverage/
+.vitest/
+*.lcov
 .env.production
 env.d.ts
 

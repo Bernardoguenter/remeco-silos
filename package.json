@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint 'src/**/*.{js,astro,ts}'"
+    "lint": "eslint 'src/**/*.{js,astro,ts}'",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
@@ -21,8 +23,14 @@
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/user-event": "^14.6.1",
     "@typescript-eslint/parser": "^8.46.2",
+    "@vitest/ui": "^4.0.10",
     "eslint": "^9.38.0",
-    "eslint-plugin-astro": "^1.3.1"
+    "eslint-plugin-astro": "^1.3.1",
+    "happy-dom": "^20.0.10",
+    "jsdom": "^27.2.0",
+    "vitest": "^4.0.10"
   }
 }
