@@ -2,6 +2,7 @@ export interface Silo {
   id: number;
   name: string;
   image_url: string;
+  image_url_sm: string;
   silo_type: string;
   description: string;
   has_options: boolean;

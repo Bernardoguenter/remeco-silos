@@ -1,25 +1,25 @@
 ---
-import GridCard from "./GridCard.astro";
-import silosAereos from "@assets/images/silos-aereos.jpg";
-import silosComederos from "@assets/images/silos-comederos.jpg";
+import silosAereos from "@assets/images/silos-aereos.webp";
+import silosComederos from "@assets/images/silos-comederos.webp";
+import GridCardHome from "./GridCardHome.astro";
 ---
 
 <main class="p-4 lg:p-16 md:p-12 w-full">
   <section class="grid grid-cols-1 md:grid-cols-2 lg:gap-12 gap-6">
-    <GridCard
+    <GridCardHome
       imageSrc={silosAereos}
       alt="Silos Aéreos"
       title="Silos Aéreos"
-      imgWidth={800}
-      imgHeight={600}
+      imgWidth={1080}
+      imgHeight={1350}
       link="/silos/aereos"
     />
-    <GridCard
+    <GridCardHome
       imageSrc={silosComederos}
       alt="Silos Comederos"
       title={"Silos Comederos"}
-      imgWidth={800}
-      imgHeight={600}
+      imgWidth={1080}
+      imgHeight={1350}
       link="/silos/comederos"
     />
   </section>
