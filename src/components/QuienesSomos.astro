@@ -1,6 +1,36 @@
 ---
 import { Picture } from "astro:assets";
-import silosComederos from "@assets/images/silos-comederos.jpg";
+import sobreNosotros from "@assets/images/sobreNosotrosRemeco.webp";
+
+const description = [
+  `Metalúrgica Remeco es una empresa familiar con más de dos décadas de trayectoria, nacida en el corazón de la Colonia Menonita, en Guatraché, La Pampa. Desde sus inicios, la compañía mantiene vivo el espíritu de su origen: un trabajo honesto, responsable y comprometido, transmitido de generación en generación. Hoy es dirigida y operada por el padre junto a sus tres hijos, quienes continúan fortaleciendo un legado basado en la dedicación y el esfuerzo diario.`,
+
+  `Con un equipo de más de 25 personas entre fábrica y cuadrilla de montaje, Metalúrgica Remeco se especializa en la fabricación de galpones y tinglados metálicos, silos aéreos y silos de autoconsumo, además de estructuras metálicas a medida para distintos tipos de proyectos. Cada pieza y cada estructura refleja un enfoque artesanal y una búsqueda constante de calidad, desde la selección de materiales hasta las terminaciones finales.`,
+
+  `A lo largo de más de 20 años, la empresa ha construido un firme reconocimiento regional por su seriedad, cumplimiento y capacidad para desarrollar soluciones confiables y duraderas. La combinación entre experiencia técnica, mano de obra especializada y trato directo con sus clientes permite entregar resultados que superan expectativas.`,
+
+  `Metalúrgica Remeco ofrece fabricación completa, montaje especializado, asesoramiento técnico y envíos, acompañando cada etapa del proceso con la misma integridad que la caracteriza desde sus orígenes. Es este conjunto de valores y prácticas lo que convierte a la empresa en un referente dentro del sector metalúrgico de la región.`,
+];
+
+const highlights = [
+  "Metalúrgica Remeco",
+  "dos décadas de trayectoria",
+  "trabajo honesto, responsable y comprometido, transmitido de generación en generación",
+  "fabricación de galpones y tinglados metálicos, silos aéreos y silos de autoconsumo, además de estructuras metálicas a medida para distintos tipos de proyectos",
+  "experiencia técnica, mano de obra especializada y trato directo con sus clientes",
+  "25 personas",
+  "20 años",
+  "fabricación completa, montaje especializado, asesoramiento técnico y envíos, acompañando cada etapa del proceso",
+];
+
+function highlightText(text: string, words: string[]) {
+  let result = text;
+  words.forEach((word) => {
+    const regex = new RegExp(word, "gi");
+    result = result.replace(regex, `<strong>${word}</strong>`);
+  });
+  return result;
+}
 ---
 
 <section
@@ -10,29 +40,19 @@ import silosComederos from "@assets/images/silos-comederos.jpg";
       Acerca de Metalúrgica Remeco
     </h2>
     <div class="flex flex-col gap-2">
-      <p class="text-slate-800">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-        repudiandae quos aut totam similique odio molestiae vitae sint animi
-        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
-        deserunt numquam ullam?
-      </p>
-      <p class="text-slate-800">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-        repudiandae quos aut totam similique odio molestiae vitae sint animi
-        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
-        deserunt numquam ullam?
-      </p>
-      <p class="text-slate-800">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-        repudiandae quos aut totam similique odio molestiae vitae sint animi
-        incidunt, reiciendis quo aspernatur, illum, doloribus id repellendus
-        deserunt numquam ullam?
-      </p>
+      {
+        description.map((paragraph) => (
+          <p
+            class="text-slate-800"
+            set:html={highlightText(paragraph, highlights)}
+          />
+        ))
+      }
     </div>
   </article>
   <aside class="lg:w-1/2 lg:h-full">
     <Picture
-      src={silosComederos}
+      src={sobreNosotros}
       alt={"Sobre Nosotros"}
       width={800}
       height={800}

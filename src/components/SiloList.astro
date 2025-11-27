@@ -13,7 +13,7 @@ const { silos } = Astro.props;
   Array.isArray(silos) && silos.length > 0 ? (
     silos.map((silo) => (
       <GridCard
-        imageSrc={silo.image_url}
+        imageSrc={[silo.image_url, silo.image_url_sm]}
         alt={silo.name}
         title={`Silo ${silo.name}`}
         imgWidth={500}

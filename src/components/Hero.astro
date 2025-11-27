@@ -1,11 +1,13 @@
 ---
 import ButtonLink from "./ButtonLink.astro";
-import silosAereos from "@assets/images/silos-aereos.jpg";
-import silosComederos from "@assets/images/silos-comederos.jpg";
+import silosAereos1 from "@assets/images/BannerSiloAereo1.webp";
+import silosAereos2 from "@assets/images/BannerSiloAereo2.webp";
+import silosComederos1 from "@assets/images/BannerSiloComedero1.webp";
+import silosComederos2 from "@assets/images/BannerSiloComedero2.webp";
 import { Picture } from "astro:assets";
 ---
 
-<section class="hero-section w-full">
+<section class="hero-section w- h-full relative">
   <div class="swiper-hero">
     <div class="swiper-wrapper">
       <!-- Slide 1 -->
@@ -14,7 +16,35 @@ import { Picture } from "astro:assets";
           <div class="slide-image">
             <Picture
               alt="Silos Aéreos"
-              src={silosAereos}
+              src={silosAereos1}
+              width={800}
+              height={800}
+              class="object-cover object-center w-full h-full"
+              fetchpriority="high"
+              layout="constrained"
+              formats={["avif", "webp"]}
+              fit="cover"
+            />
+          </div>
+          <div class="slide-text">
+            <h1 class="text-slate-800 uppercase text-center">Silos Aéreos</h1>
+            <p class="text-slate-900">
+              Acá va una descripción para este título.
+            </p>
+            <ButtonLink
+              label="Ver más"
+              style="secondary"
+              link="/silos/aereos"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <div class="slide-image">
+            <Picture
+              alt="Silos Aéreos"
+              src={silosAereos2}
               width={800}
               height={800}
               class="object-cover object-center w-full h-full"
@@ -44,7 +74,37 @@ import { Picture } from "astro:assets";
           <div class="slide-image">
             <Picture
               alt="Silos Comederos"
-              src={silosComederos}
+              src={silosComederos1}
+              width={800}
+              height={800}
+              class="object-center w-full h-full"
+              fetchpriority="high"
+              layout="constrained"
+              fit="cover"
+              formats={["avif", "webp"]}
+            />
+          </div>
+          <div class="slide-text">
+            <h1 class="text-slate-800 uppercase text-center">
+              Silos Comederos
+            </h1>
+            <p class="text-slate-900">
+              Acá va una descripción para este título.
+            </p>
+            <ButtonLink
+              label="Ver más"
+              style="secondary"
+              link="/silos/comederos"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-content">
+          <div class="slide-image">
+            <Picture
+              alt="Silos Comederos"
+              src={silosComederos2}
               width={800}
               height={800}
               class="object-center w-full h-full"
@@ -128,7 +188,7 @@ import { Picture } from "astro:assets";
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .slide-content {
       flex-direction: column;
     }
