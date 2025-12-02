@@ -1,38 +1,19 @@
 ---
 import Breadcums from "@components/Breadcumbs.astro";
 import Layout from "@layouts/Layout.astro";
-import { getGlobalPreferences } from "@lib/globalStore";
-import { getSiloByName } from "@lib/silos";
-import type { Preferences, Silo } from "../../../../types/types";
-import { getSiloPrice } from "@helpers/calculatePrice";
 import AsktButton from "@components/AsktButton.astro";
 import SiloDescription from "@components/SiloDescription.astro";
 import SiloDescriptionWithOptions from "@components/SiloDescriptionWithOptions.astro";
-import { formatPrices } from "@helpers/formatData";
+import { formatPrices, getSiloData } from "@helpers/formatData";
 import { Picture } from "astro:assets";
 
 const { name } = Astro.params;
 
-let silo: Silo | null = null;
-let preferences: Preferences | null = null;
-try {
-  if (name) {
-    [preferences, silo] = await Promise.all([
-      getGlobalPreferences(),
-      getSiloByName(name),
-    ]);
-  }
-} catch (err) {
-  console.error("Error al obtener silos o preferencias:", err);
-}
-
-let formattedPrice: string | null = null;
-let price: number | null = null;
-
-if (preferences && silo) {
-  price = name ? getSiloPrice(name, preferences, silo) : 0;
-  formattedPrice = formatPrices(Math.floor(price));
-}
+if (!name) return;
+const siloData = await getSiloData(name);
+const silo = siloData.silo;
+const preferences = siloData.preferences;
+const price = siloData.price;
 ---
 
 <Layout
@@ -81,7 +62,7 @@ if (preferences && silo) {
                     <SiloDescription
                       description={silo.description}
                       iva_percentage={preferences.iva_percentage}
-                      price={formattedPrice ?? "0"}
+                      price={formatPrices(price ?? 0)}
                     />
                   )}
                 </>
