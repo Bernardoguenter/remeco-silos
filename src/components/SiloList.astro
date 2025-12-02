@@ -16,6 +16,7 @@ const { silos } = Astro.props;
         imageSrc={[silo.image_url, silo.image_url_sm]}
         alt={silo.name}
         title={`Silo ${silo.name}`}
+        name={silo.name}
         imgWidth={500}
         imgHeight={500}
         link={`/silos/${silo.silo_type}/${silo.name}`}
