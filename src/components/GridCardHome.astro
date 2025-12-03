@@ -62,15 +62,21 @@ const {
       )
     }
   </a>
+  <a
+    title={title}
+    href={link}>
+    <aside
+      class="flex justify-between items-center bg-slate-900 flex-grow p-4 cursor-pointer">
+      <div class="flex flex-col gap-2">
+        <h3 class="text-gray-100 text-base md:text-lg font-semibold">
+          {title}
+        </h3>
+      </div>
 
-  <!-- Contenido inferior -->
-  <aside class="flex justify-between items-center bg-slate-900 flex-grow p-4">
-    <h3 class="text-gray-100 text-lg font-semibold">{title}</h3>
-    <a
-      title={title}
-      href={link}
-      class="flex items-center justify-center bg-slate-800 hover:bg-slate-700 rounded-full p-2 transition-all duration-200">
-      <ArrowFoward color="white" />
-    </a>
-  </aside>
+      <div
+        class="flex items-center justify-center bg-slate-800 hover:bg-slate-700 rounded-full p-2 transition-all duration-200">
+        <ArrowFoward color="white" />
+      </div>
+    </aside>
+  </a>
 </article>

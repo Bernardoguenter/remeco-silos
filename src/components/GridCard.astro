@@ -11,12 +11,25 @@ interface Props {
   imgHeight: number;
   link: string;
   name: string;
+  type: string;
+  index: number;
 }
 
-const { imageSrc, alt, title, imgHeight, imgWidth, link, name } = Astro.props;
+const { imageSrc, alt, title, imgHeight, imgWidth, link, name, type, index } =
+  Astro.props;
 
 const siloData = await getSiloData(name);
 const formattedPrice = formatPrices(siloData.price ?? 0);
+
+const formatTitle = (name: string, type: string) => {
+  if (type !== "comederos") {
+    return name;
+  }
+
+  const title = name.replace("al medio", "");
+
+  return title;
+};
 ---
 
 <article
@@ -32,7 +45,7 @@ const formattedPrice = formatPrices(siloData.price ?? 0);
       width={imgWidth}
       height={imgHeight}
       class="w-full h-full object-cover object-center"
-      loading="lazy"
+      loading={index < 6 ? "eager" : "lazy"}
       decoding="async"
     />
   </a>
@@ -48,7 +61,7 @@ const formattedPrice = formatPrices(siloData.price ?? 0);
       width={imgWidth}
       height={imgHeight}
       class="w-full h-full object-cover object-center"
-      loading="lazy"
+      loading={index < 6 ? "eager" : "lazy"}
       decoding="async"
     />
   </a>
@@ -58,18 +71,17 @@ const formattedPrice = formatPrices(siloData.price ?? 0);
     title={title}
     href={link}>
     <aside
-      class="flex justify-between items-center bg-slate-900 flex-grow p-4 cursor-pointer">
-      <div class="flex flex-col gap-2">
+      class="flex justify-between items-center bg-slate-900 flex-grow p-2 md:p-4 cursor-pointer">
+      <div class="flex flex-col gap-0">
         <h3 class="text-gray-100 text-base md:text-lg font-semibold">
-          {title}
+          {formatTitle(title, type)}
         </h3>
-        <h4 class="text-white text-sm!">
+        <h4 class="text-white text-sm! md:text-base! lg:text-lg!">
           {siloData.silo?.silo_type === "aereos" ? "Desde " : ""}{
             formattedPrice
           }
         </h4>
       </div>
-
       <div
         class="flex items-center justify-center bg-slate-800 hover:bg-slate-700 rounded-full p-2 transition-all duration-200">
         <ArrowFoward color="white" />
