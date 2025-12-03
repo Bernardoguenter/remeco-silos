@@ -39,14 +39,13 @@ const mappedOptions = Object.entries(options).map(([angle, detail]) => {
 ---
 {
   mappedOptions.map((silo)=>(
-<div class="mb-2">
-  <p class="mb-2 font-bold text-slate-900 text-xl">Características {silo.title}:</p>
-  <StringToList inputString={silo.description} />
-</div>
-<SiloPrice   iva_percentage={iva_percentage}
-  price={silo.price}/>
-
-  
+    <div class="mb-2">
+      <p class="mb-2 font-bold text-slate-900 text-xl">Características {silo.title}:</p>
+      <StringToList inputString={silo.description} />
+    </div>
+    <SiloPrice   
+      iva_percentage={iva_percentage}
+      price={silo.price}/>
 ))
 }
 

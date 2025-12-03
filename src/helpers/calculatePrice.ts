@@ -11,11 +11,7 @@ export function getSiloPrice(
     const priceInArs =
       preferences.feeder_silos[name] * preferences.dollar_quote;
 
-    const finalPrice = getFinalPrice(
-      priceInArs,
-      preferences.iva_percentage,
-      preferences.default_markup
-    );
+    const finalPrice = getFinalPrice(priceInArs, preferences.default_markup);
     return finalPrice;
   }
 
@@ -23,28 +19,16 @@ export function getSiloPrice(
     const priceInArs =
       preferences.airbase_silos[name] * preferences.dollar_quote;
 
-    const finalPrice = getFinalPrice(
-      priceInArs,
-      preferences.iva_percentage,
-      preferences.default_markup
-    );
+    const finalPrice = getFinalPrice(priceInArs, preferences.default_markup);
     return finalPrice;
   }
 
   return 0;
 }
 
-const getFinalPrice = (
-  price: number,
-  iva_percentage: number,
-  default_markup: number
-) => {
-  const priceBeforeTaxes = (price * (100 - iva_percentage)) / 100;
-
+const getFinalPrice = (price: number, default_markup: number) => {
   const finalPrice =
-    default_markup > 0
-      ? priceBeforeTaxes * (1 + default_markup / 100)
-      : priceBeforeTaxes;
+    default_markup > 0 ? price * (1 + default_markup / 100) : price;
 
   return finalPrice;
 };
