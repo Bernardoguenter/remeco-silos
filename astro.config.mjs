@@ -31,7 +31,7 @@ export default defineConfig({
   },
   output: "server",
   adapter: vercel({
-    imageService: false,
+    imageService: true,
   }),
   site: "https://silosremeco.com/",
 });
