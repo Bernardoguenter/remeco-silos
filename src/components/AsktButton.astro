@@ -1,11 +1,9 @@
 ---
-import { config } from "@config/config";
 interface Props {
   silo: string;
   style?: "primary" | "secondary";
 }
 
-const whatsappNumber = config.wa_number;
 const { silo, style } = Astro.props;
 
 const baseClasses =
@@ -16,10 +14,26 @@ const styleClasses =
     : "bg-white text-slate-800 hover:bg-slate-800 hover:text-white transition tra";
 ---
 
-<a
+<button
+  data-silo={silo}
   title="Chatear por Whatsapp"
-  href={`https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos. Estoy interesado en un ${silo}`}
-  class={`${baseClasses} ${styleClasses} transition-all delay-75 self-start`}
-  target="_blank">
+  id="chat_with_us"
+  class={`${baseClasses} ${styleClasses} transition-all delay-75 self-start cursor-pointer`}>
   Hablar con un asesor
-</a>
+</button>
+
+<script>
+  import { config } from "@config/config";
+
+  document.addEventListener("astro:page-load", () => {
+    const btn = document.getElementById("chat_with_us") as HTMLButtonElement;
+    const whatsappNumber = config.wa_number;
+    const silo = btn.dataset.silo;
+    btn.addEventListener("click", () => {
+      window.open(
+        `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos. Estoy interesado en un ${silo}s`,
+        "_blank"
+      );
+    });
+  });
+</script>

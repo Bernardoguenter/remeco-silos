@@ -1,0 +1,9 @@
+<script>
+  import { gtmPageView } from "@helpers/gmtPageView";
+
+  gtmPageView(window.location.pathname);
+
+  document.addEventListener("astro:after-swap", () => {
+    gtmPageView(window.location.pathname);
+  });
+</script>

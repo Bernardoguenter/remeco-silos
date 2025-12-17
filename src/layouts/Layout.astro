@@ -5,6 +5,11 @@ import Header from "@components/Nav/Header.astro";
 import WhatsappButton from "@components/WhatsappButton.astro";
 import { ClientRouter } from "astro:transitions";
 import "@styles/global.css";
+import MetaTags from "@components/head/MetaTags.astro";
+import Sitemap from "@components/head/Sitemap.astro";
+import Gtmhead from "@components/head/Gtmhead.astro";
+import GtmNoScript from "@components/head/GtmNoScript.astro";
+import GtmPageView from "@components/head/GtmPageView.astro";
 
 const {
   title = "Remeco - Silos",
@@ -16,40 +21,28 @@ const {
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width"
+    <Gtmhead />
+    <MetaTags
+      description={description}
+      tags={tags}
     />
     <link
       rel="icon"
       type="image/svg+xml"
       href="/favicon.png"
     />
-    <link
-      rel="sitemap"
-      href="/sitemap-index.xml"
-    />
+    <Sitemap />
     <Fonts />
-    <meta
-      name="generator"
-      content={Astro.generator}
-    />
-    <meta
-      name="description"
-      content={description}
-    />
-    <meta
-      name="tags"
-      content={tags}
-    />
+
     <title>{title}</title>
     <ClientRouter />
   </head>
   <body class="flex flex-col min-h-[100vh]">
+    <GtmNoScript />
     <Header />
     <slot />
     <Footer />
     <WhatsappButton />
+    <GtmPageView />
   </body>
 </html>
