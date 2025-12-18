@@ -3,6 +3,7 @@ declare const grecaptcha: any;
 import { actions } from "astro:actions";
 import { isInputError } from "astro:actions";
 import { config } from "@config/config";
+import { pushGtmEvent } from "@helpers/gtmEvents";
 
 document.addEventListener("astro:page-load", () => {
   const form = document.getElementById("contact-form") as HTMLFormElement;
@@ -59,6 +60,11 @@ document.addEventListener("astro:page-load", () => {
     if (!result.error) {
       showMessage(successMsg, true);
       showMessage(errorMsg, false);
+
+      pushGtmEvent("contact_form_submit", {
+        form_id: "contact-form-silos",
+      });
+
       form.reset();
     } else {
       showMessage(successMsg, false);

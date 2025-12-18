@@ -27,10 +27,18 @@ import { Picture } from "astro:assets";
 
 <script>
   import { config } from "@config/config";
+  import { pushGtmEvent } from "@helpers/gtmEvents";
 
   document.addEventListener("astro:page-load", () => {
     const whatsappNumber = config.wa_number;
     const btn = document.getElementById("wa-btn") as HTMLButtonElement;
+
+    btn.addEventListener("click", () => {
+      pushGtmEvent("whatsapp_click", {
+        source: "Floating Button",
+      });
+    });
+
     btn.addEventListener("click", () => {
       window.open(
         `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos`,
