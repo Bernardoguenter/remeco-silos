@@ -24,11 +24,17 @@ const styleClasses =
 
 <script>
   import { config } from "@config/config";
+  import { pushGtmEvent } from "@helpers/gtmEvents";
 
   document.addEventListener("astro:page-load", () => {
     const btn = document.getElementById("chat_with_us") as HTMLButtonElement;
     const whatsappNumber = config.wa_number;
     const silo = btn.dataset.silo;
+
+    btn.addEventListener("click", () => {
+      pushGtmEvent("asesor_click", { silo });
+    });
+
     btn.addEventListener("click", () => {
       window.open(
         `https://wa.me/${whatsappNumber}?text=Hola, me contacto a través del sitio web de Silos. Estoy interesado en un ${silo}s`,
