@@ -54,7 +54,7 @@ document.addEventListener("astro:page-load", () => {
     formData.append("recaptchaToken", token);
 
     const result = await actions.sendEmail(formData);
-
+    console.log(result);
     if (!result.error) {
       showMessage(successMsg, true);
       showMessage(errorMsg, false);
