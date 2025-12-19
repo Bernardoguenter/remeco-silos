@@ -17,12 +17,12 @@ export default defineConfig({
   site: "https://silosremeco.com",
 
   security: {
-    allowedDomains: [
-      {
-        protocol: "https",
-        hostname: "noiydfvnlzwoekvvyabq.supabase.co",
-      },
-    ],
+    csrf: {
+      allowedOrigins: [
+        "https://silosremeco.com",
+        "https://www.silosremeco.com",
+      ],
+    },
   },
 
   image: {
@@ -33,9 +33,5 @@ export default defineConfig({
         pathname: "/storage/v1/object/public/silos_img/**",
       },
     ],
-    domains: ["noiydfvnlzwoekvvyabq.supabase.co"],
-  },
-  server: {
-    allowedOrigins: ["https://silosremeco.com"],
   },
 });
