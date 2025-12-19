@@ -14,7 +14,7 @@ export default defineConfig({
     devImageService: "sharp",
   }),
 
-  site: "https://silosremeco.com/",
+  site: "https://silosremeco.com",
 
   security: {
     allowedDomains: [
