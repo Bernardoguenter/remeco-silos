@@ -6,7 +6,7 @@ import { config } from "@config/config";
 import { pushGtmEvent } from "@helpers/gtmEvents";
 
 document.addEventListener("astro:page-load", () => {
-  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const form = document.getElementById("contact-form-silos") as HTMLFormElement;
   const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
   const successMsg = document.getElementById(
     "delivery-success-msg"
