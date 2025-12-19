@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const grecaptcha: any;
 import { actions } from "astro:actions";
 import { isInputError } from "astro:actions";
@@ -34,10 +33,9 @@ document.addEventListener("astro:page-load", () => {
 
     const formData = new FormData(form);
 
-    if (!config.recaptcha_api_key) {
+    if (!config.recaptpcha_api_key_public) {
       console.error("PUBLIC_RECAPTCHA_API_KEY no está definida en el cliente");
     }
-
     await new Promise<void>((resolve) => {
       grecaptcha.ready(resolve);
     });
