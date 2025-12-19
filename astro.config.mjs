@@ -35,4 +35,7 @@ export default defineConfig({
     ],
     domains: ["noiydfvnlzwoekvvyabq.supabase.co"],
   },
+  server: {
+    allowedOrigins: ["https://silosremeco.com"],
+  },
 });
