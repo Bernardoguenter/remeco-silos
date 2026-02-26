@@ -6,6 +6,7 @@ import SiloDescription from "@components/SiloDescription.astro";
 import SiloDescriptionWithOptions from "@components/SiloDescriptionWithOptions.astro";
 import { formatPrices, getSiloData } from "@helpers/formatData";
 import { Picture } from "astro:assets";
+import FeederSiloDescriptionWithOptions from "@components/FeederSiloDescriptionWithOptions.astro";
 
 const { name } = Astro.params;
 
@@ -59,6 +60,15 @@ const price = siloData.price;
                       iva_percentage={preferences.iva_percentage}
                       price={price ?? 0}
                     />
+                  ) : preferences.has_fiber_base.includes(silo.name) ? (
+                    <FeederSiloDescriptionWithOptions
+                      description={silo.description}
+                      iva_percentage={preferences.iva_percentage}
+                      fiber_base_cost={preferences.fiber_base_cost}
+                      price={price ?? 0}
+                      dollar_quote={preferences.dollar_quote}
+                      default_markup={preferences.default_markup}
+                    />
                   ) : (
                     <SiloDescription
                       description={silo.description}
@@ -83,3 +93,8 @@ const price = siloData.price;
     )
   }
 </Layout>
+
+<script define:vars={{ siloData }}>
+  console.log("PREFERENCES", siloData.preferences);
+  console.log("SILO", siloData);
+</script>
