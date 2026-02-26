@@ -22,9 +22,5 @@ if (type)
   <PageTitle
     pageTitle={type === "comederos" ? "Silos Comederos" : "Silos Aéreos"}
   />
-  <main class="p-4 lg:p-16 md:p-12 w-full">
-    <section class="grid grid-cols-2 md:grid-cols-3 lg:gap-12 gap-6">
-      <SiloList silos={silos} />
-    </section>
-  </main>
+  <SiloList silos={silos} />
 </Layout>

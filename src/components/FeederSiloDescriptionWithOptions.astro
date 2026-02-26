@@ -1,0 +1,60 @@
+---
+import { formatPrices } from "@helpers/formatData";
+import StringToList from "./StringToList.astro";
+import SiloPrice from "./SiloPrice.astro";
+
+interface Props {
+  description: string;
+  price: number;
+  iva_percentage: number;
+  fiber_base_cost: number;
+  dollar_quote: number;
+  default_markup: number;
+}
+
+const {
+  description,
+  iva_percentage,
+  price,
+  fiber_base_cost,
+  dollar_quote,
+  default_markup,
+} = Astro.props;
+
+const fiberCostInArs = fiber_base_cost * dollar_quote;
+
+const fiberCostFinal =
+  default_markup > 0
+    ? fiberCostInArs * (1 + default_markup / 100)
+    : fiberCostInArs;
+
+const mappedOptions = [
+  {
+    title: "Base estándar",
+    description,
+    price: formatPrices(price),
+  },
+  {
+    title: "Con Base de fibra",
+    description: "Similares a base estandar, con base de fibra",
+    price: formatPrices(price + fiberCostFinal),
+  },
+];
+---
+
+{
+  mappedOptions.map((option) => (
+    <div class="mb-6">
+      <p class="mb-2 font-bold text-slate-900 text-xl">
+        Características {option.title}:
+      </p>
+
+      <StringToList inputString={option.description} />
+
+      <SiloPrice
+        iva_percentage={iva_percentage}
+        price={option.price}
+      />
+    </div>
+  ))
+}

@@ -18,6 +18,8 @@ export interface Preferences {
   airbase_silos: AirbaseSilosPriceMap;
   cone_base_45: number;
   cone_base_55: number;
+  fiber_base_cost: number;
+  has_fiber_base: string[];
 }
 
 export type AirbaseSilosPriceMap = Record<string, number>;
