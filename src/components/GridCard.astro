@@ -17,7 +17,6 @@ interface Props {
 
 const { imageSrc, alt, title, imgHeight, imgWidth, link, name, type, index } =
   Astro.props;
-
 const siloData = await getSiloData(name);
 const formattedPrice = formatPrices(siloData.price ?? 0);
 
